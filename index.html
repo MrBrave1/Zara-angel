@@ -1,154 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zara - A Beautiful and Amazing Soul</title>
-    <style>
-        /* CSS for styling the website */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffcce0; /* soft pink background */
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zara - A Beautiful and Amazing Soul</title>
+  <style>
+    /* CSS for styling the website */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffcce0; /* soft pink background */
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        /* Floating flowers */
-        .flower {
-            position: fixed;
-            top: -50px;
-            font-size: 2rem;
-            animation: fall linear infinite;
-            opacity: 0.9;
-        }
+    header {
+      background: linear-gradient(to right, #ff6f61, #ffb88c);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      position: relative;
+      z-index: 2;
+    }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-50px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
 
-        header {
-            background: linear-gradient(to right, #ff6f61, #ffb88c);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            position: relative;
-            z-index: 2;
-        }
+    header p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 2;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-        }
+    .description {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            position: relative;
-            z-index: 2;
-        }
+    .description h2 {
+      color: #ff6f61;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
 
-        .description {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    .description p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
 
-        .description h2 {
-            color: #ff6f61;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
+    /* Horizontal scroll flower gallery */
+    .gallery {
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+      display: flex;
+      gap: 1rem;
+      scroll-snap-type: x mandatory;
+    }
 
-        .description p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
+    .gallery img {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+      scroll-snap-align: center;
+      transition: transform 0.3s;
+    }
 
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 2;
-        }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
 
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 2;
+    }
 
-        /* Responsive design */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
 
-            header p {
-                font-size: 1rem;
-            }
-
-            .description h2 {
-                font-size: 1.5rem;
-            }
-
-            .description p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    /* Responsive design */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .description h2 {
+        font-size: 1.5rem;
+      }
+      .description p {
+        font-size: 1rem;
+      }
+      .gallery img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Meet Zara</h1>
-        <p>A Beautiful and Amazing Soul from India</p>
-    </header>
+  <header>
+    <h1>Meet Zara</h1>
+    <p>A Beautiful and Amazing Soul from India</p>
+  </header>
 
-    <div class="container">
-        <div class="description">
-            <h2>About Zara</h2>
-            <p>Zara is a 19-year-old vibrant and inspiring young woman from India, currently pursuing her BBA in Finance in the beautiful city of Jaipur. Known for her grace and charm, Zara captivates everyone with her warm personality and radiant smile.</p>
-            <p>Her dedication to her studies in finance reflects her sharp intellect and ambition to make a mark in the world of business. Beyond academics, Zara is an amazing individual who brings positivity and creativity to everything she does, whether it's engaging in meaningful conversations or exploring the rich culture of Jaipur.</p>
-            <p>With her blend of beauty, intelligence, and kindness, Zara is truly a gem, inspiring those around her to dream big and live passionately.</p>
-        </div>
+  <div class="container">
+    <div class="description">
+      <h2>About Zara</h2>
+      <p>Zara is a 19-year-old vibrant and inspiring young woman from India, currently pursuing her BBA in Finance in the beautiful city of Jaipur. Known for her grace and charm, Zara captivates everyone with her warm personality and radiant smile.</p>
+      <p>Her dedication to her studies in finance reflects her sharp intellect and ambition to make a mark in the world of business. Beyond academics, Zara is an amazing individual who brings positivity and creativity to everything she does, whether it's engaging in meaningful conversations or exploring the rich culture of Jaipur.</p>
+      <p>With her blend of beauty, intelligence, and kindness, Zara is truly a gem, inspiring those around her to dream big and live passionately.</p>
     </div>
 
-    <footer>
-        <p>&copy; 2025 | Created with ❤️ for Zara</p>
-    </footer>
+    <!-- Flower Photo Gallery -->
+    <div class="gallery">
+      <img src="https://source.unsplash.com/200x200/?flower,pink" alt="Flower 1">
+      <img src="https://source.unsplash.com/200x200/?flower,rose" alt="Flower 2">
+      <img src="https://source.unsplash.com/200x200/?flower,sunflower" alt="Flower 3">
+      <img src="https://source.unsplash.com/200x200/?flower,lily" alt="Flower 4">
+      <img src="https://source.unsplash.com/200x200/?flower,tulip" alt="Flower 5">
+    </div>
+  </div>
 
-    <!-- Floating flowers + pandas (using emoji) -->
-    <script>
-        const flowers = ["🌸", "🌺", "🌼", "🌻", "🐼"];
-        for (let i = 0; i < 20; i++) {
-            let span = document.createElement("span");
-            span.className = "flower";
-            span.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-            span.style.left = Math.random() * 100 + "vw";
-            span.style.animationDuration = 5 + Math.random() * 5 + "s";
-            span.style.fontSize = 1.5 + Math.random() * 2 + "rem";
-            document.body.appendChild(span);
-        }
-    </script>
+  <footer>
+    <p>&copy; 2025 | Created with ❤️ for Zara by some1</p>
+  </footer>
 </body>
 </html>
