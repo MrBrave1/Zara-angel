@@ -1,75 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zara's Page</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zara - A Beautiful and Amazing Soul</title>
+    <style>
+        /* CSS for styling the website */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffcce0; /* soft pink background */
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Floating flowers */
+        .flower {
+            position: fixed;
+            top: -50px;
+            font-size: 2rem;
+            animation: fall linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        header {
+            background: linear-gradient(to right, #ff6f61, #ffb88c);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .description {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .description h2 {
+            color: #ff6f61;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .description p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .description h2 {
+                font-size: 1.5rem;
+            }
+
+            .description p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>🌸 Zara 🌸</h1>
-    <p>BBA Fintech Student | Jaipur</p>
-  </header>
+    <header>
+        <h1>Meet Zara</h1>
+        <p>A Beautiful and Amazing Soul from India</p>
+    </header>
 
-  <section class="about">
-    <h2>About Zara</h2>
-    <p>
-      Zara is a very beautiful and talented young woman studying <strong>BBA Fintech</strong> in Jaipur.  
-      She has a passion for learning, enjoys creativity, and loves flowers 🌺🌼🌹 which bring joy and freshness to her life.
-    </p>
-    <section>
-<pre style="font-family: 'Noto Serif', serif; font-size: 18px; white-space: pre-wrap; line-height: 1.6;">
-Teri nigaahon mein wo noor hai,
-jisse meri rooh bhi sarshaar hai.
-
-Tere lafzon mein wo jaadu hai,
-jo dil ko beqaraar kar de, khwabon ko taabeer kar de.
-
-Teri muskaan meri sabse haseen dua hai,
-teri maujoodgi mera sabse khoobsurat jahaan hai.
-
-Main teri mohabbat mein aisa qaid hoon,
-ke har saans mein bas tera naam hai, tera iqraar hai.
-
-Tu agar haan keh de, to meri taqdeer roshan ho jaaye,
-tera saath mil jaaye, to meri duniya gulzaar ho jaaye.
-</pre>
-
-<pre style="font-family: 'Noto Serif Devanagari', serif; font-size: 18px; white-space: pre-wrap; line-height: 1.6;">
-तेरी आँखों में जैसे कोई सपना चमकता है,
-तेरी मुस्कान से मेरा हर दिन महकता है।
-
-तेरे बिना ये दिल अधूरा सा लगता है,
-तेरे साथ ही तो हर सफ़र पूरा सा लगता है।
-
-तू चाँद है, मैं उसका परवाना बन जाऊँ,
-तेरे नाम से हर दास्तान सजाऊँ।
-
-मेरी हर धड़कन तुझे पुकारे चुपके-चुपके,
-तू ही है दुआ, तू ही है मेरे रब से माँगी हुई ख्वाहिशें।
-
-बस इतना समझ ले तू मेरी जान,
-तेरे बिना अधूरी है मेरी ये पहचान।
-</pre>
-</section>
-
-  <section class="gallery">
-    <h2>Flower Gallery</h2>
-    <div class="images">
-      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" alt="Flowers">
-      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Flowers">
-      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Flowers">
-      <img src="https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6" alt="Flowers">
+    <div class="container">
+        <div class="description">
+            <h2>About Zara</h2>
+            <p>Zara is a 19-year-old vibrant and inspiring young woman from India, currently pursuing her BBA in Finance in the beautiful city of Jaipur. Known for her grace and charm, Zara captivates everyone with her warm personality and radiant smile.</p>
+            <p>Her dedication to her studies in finance reflects her sharp intellect and ambition to make a mark in the world of business. Beyond academics, Zara is an amazing individual who brings positivity and creativity to everything she does, whether it's engaging in meaningful conversations or exploring the rich culture of Jaipur.</p>
+            <p>With her blend of beauty, intelligence, and kindness, Zara is truly a gem, inspiring those around her to dream big and live passionately.</p>
+        </div>
     </div>
-  </section>
 
-  <footer>
-    <p>Made with 💖 for Zara by some1</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 | Created with ❤️ for Zara</p>
+    </footer>
+
+    <!-- Floating flowers + pandas (using emoji) -->
+    <script>
+        const flowers = ["🌸", "🌺", "🌼", "🌻", "🐼"];
+        for (let i = 0; i < 20; i++) {
+            let span = document.createElement("span");
+            span.className = "flower";
+            span.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            span.style.left = Math.random() * 100 + "vw";
+            span.style.animationDuration = 5 + Math.random() * 5 + "s";
+            span.style.fontSize = 1.5 + Math.random() * 2 + "rem";
+            document.body.appendChild(span);
+        }
+    </script>
 </body>
 </html>
-
-
-
-
