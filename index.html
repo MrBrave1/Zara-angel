@@ -5,86 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zara - A Beautiful and Amazing Soul</title>
   <audio id="bgMusic">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
   <style>
-    .clickable-name {
-  cursor: pointer;
-  text-decoration: underline;
-  color: #ff0055;
-  transition: color 0.3s;
-}
-
-.clickable-name:hover {
-  color: #ff3366;
-}
+    :root {
+      --golden-yellow: #ffe066;
+      --golden-light: #fff9db;
+      --accent-pink: #ff6f61;
+      --deep-pink: #ff0055;
+      --lighter-pink: #ff3366;
+      --background-pink: #ffcce0;
+      --poem-bg: #fff0f5;
+      --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      --container-width: 900px;
+    }
 
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #ffcce0;
+      background-color: var(--background-pink);
       color: #333;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
     header {
-      background: linear-gradient(to right, #ffe066, #fff9db);
-      color: white;
+      background: linear-gradient(to right, var(--golden-yellow), var(--golden-light));
+      color: #404040;
       text-align: center;
       padding: 2rem 0;
     }
-
     header h1 {
       margin: 0;
       font-size: 2.5rem;
     }
-
     header p {
       font-size: 1.2rem;
       margin: 0.5rem 0;
     }
 
+    .clickable-name {
+      cursor: pointer;
+      text-decoration: underline;
+      color: var(--deep-pink);
+      transition: color 0.3s;
+    }
+    .clickable-name:hover {
+      color: var(--lighter-pink);
+    }
+
     .container {
-      max-width: 900px;
+      max-width: var(--container-width);
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
     .description {
-      background: white;
+      background: #fff;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--box-shadow);
       text-align: center;
     }
-
     .description h2 {
-      color: #ff6f61;
+      color: var(--accent-pink);
       font-size: 1.8rem;
       margin-bottom: 1rem;
     }
-
     .description p {
       font-size: 1.1rem;
       margin-bottom: 1rem;
     }
 
-    /* Horizontal scroll flower gallery */
+    .poem {
+      background: var(--poem-bg);
+      border-left: 4px solid var(--accent-pink);
+      padding: 1.5rem;
+      margin: 2rem 0 0 0;
+      border-radius: 8px;
+      font-family: 'Georgia', serif;
+      font-size: 1.13rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
     .gallery {
-      margin: 2rem auto;
+      margin: 2rem auto 1rem auto;
       padding: 1rem;
       background: #fff;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      overflow-x: auto;
+      box-shadow: var(--box-shadow);
       display: flex;
       gap: 1rem;
+      overflow-x: auto;
       scroll-snap-type: x mandatory;
     }
-
     .gallery img {
       flex: 0 0 auto;
       width: 220px;
@@ -93,25 +110,23 @@
       object-fit: cover;
       scroll-snap-align: center;
       transition: transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      background: #f9f9f9;
     }
-
     .gallery img:hover {
       transform: scale(1.05);
     }
 
     footer {
       background: #333;
-      color: white;
+      color: #fff;
       text-align: center;
       padding: 1rem 0;
       position: fixed;
       bottom: 0;
       width: 100%;
-    }
-
-    footer p {
-      margin: 0;
       font-size: 0.9rem;
+      z-index: 999;
     }
 
     @media (max-width: 600px) {
@@ -124,104 +139,85 @@
       .description h2 {
         font-size: 1.5rem;
       }
-      .description p {
+      .description p, .poem {
         font-size: 1rem;
       }
       .gallery img {
-        width: 150px;
-        height: 150px;
-      }}
-      .poem {
-  background: #fff0f5; /* light pink poetic background */
-  border-left: 4px solid #ff6f61;
-  padding: 1.5rem;
-  margin: 2rem 0;
-  border-radius: 8px;
-  font-family: 'Georgia', serif;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  white-space: pre-wrap; /* preserves spaces & line breaks */
+        width: 140px;
+        height: 140px;
+      }
+      .container {
+        padding: 0 0.3rem;
+      }
     }
   </style>
   <script>
-  function playMusic() {
-    const audio = document.getElementById("bgMusic");
-    audio.play();
-  }
-</script>
-
+    function playMusic() {
+      const audio = document.getElementById("bgMusic");
+      audio.play();
+    }
+  </script>
 </head>
 <body>
   <header>
     <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>
     <p>A Beautiful and Amazing Soul from India</p>
   </header>
-
   <div class="container">
     <div class="description">
       <h2>About Zara</h2>
-      <p>Zara is a 19-year-old vibrant and inspiring young woman from India, currently pursuing her BBA in Finance in the beautiful city of Jaipur. Known for her grace and charm, Zara captivates everyone with her warm personality and radiant smile.</p>
-      <p>Her dedication to her studies in finance reflects her sharp intellect and ambition to make a mark in the world of business. Beyond academics, Zara is an amazing individual who brings positivity and creativity to everything she does, whether it's engaging in meaningful conversations or exploring the rich culture of Jaipur.</p>
-      <p>With her blend of beauty, intelligence, and kindness, Zara is truly a gem, inspiring those around her to dream big and live passionately.</p>
-      <br>
+      <p>
+        Zara is a 19-year-old vibrant and inspiring young woman from India, currently pursuing her BBA in Finance in the beautiful city of Jaipur. Known for her grace and charm, Zara captivates everyone with her warm personality and radiant smile.
+      </p>
+      <p>
+        Her dedication to her studies in finance reflects her sharp intellect and ambition to make a mark in the world of business. Beyond academics, Zara is an amazing individual who brings positivity and creativity to everything she does, whether it's engaging in meaningful conversations or exploring the rich culture of Jaipur.
+      </p>
+      <p>
+        With her blend of beauty, intelligence, and kindness, Zara is truly a gem, inspiring those around her to dream big and live passionately.
+      </p>
       <div class="poem">
-  <p>
-    Teri nigaahon mein wo noor hai,<br>
-    jisse meri rooh bhi sarshaar hai.<br><br>
+        Teri nigaahon mein wo noor hai,<br>
+        jisse meri rooh bhi sarshaar hai.<br><br>
 
-    Tere lafzon mein wo jaadu hai,<br>
-    jo dil ko beqaraar kar de, khwabon ko taabeer kar de.<br><br>
+        Tere lafzon mein wo jaadu hai,<br>
+        jo dil ko beqaraar kar de, khwabon ko taabeer kar de.<br><br>
 
-    Teri muskaan meri sabse haseen dua hai,<br>
-    teri maujoodgi mera sabse khoobsurat jahaan hai.<br><br>
+        Teri muskaan meri sabse haseen dua hai,<br>
+        teri maujoodgi mera sabse khoobsurat jahaan hai.<br><br>
 
-    Main teri mohabbat mein aisa qaid hoon,<br>
-    ke har saans mein bas tera naam hai, tera iqraar hai.<br><br>
+        Main teri mohabbat mein aisa qaid hoon,<br>
+        ke har saans mein bas tera naam hai, tera iqraar hai.<br><br>
 
-    Tu agar haan keh de, to meri taqdeer roshan ho jaaye,<br>
-    tera saath mil jaaye, to meri duniya gulzaar ho jaaye.
-  </p>
-</div>
+        Tu agar haan keh de, to meri taqdeer roshan ho jaaye,<br>
+        tera saath mil jaaye, to meri duniya gulzaar ho jaaye.
+      </div>
       <div class="poem">
-तेरी निगाहों में वो नूर है,  
-जिससे मेरी रूह भी सरशार है।  
+        तेरी निगाहों में वो नूर है,  
+        जिससे मेरी रूह भी सरशार है।  
 
-तेरे लफ़्ज़ों में वो जादू है,  
-जो दिल को बेक़रार कर दे, ख़्वाबों को ताबीर कर दे।  
+        तेरे लफ़्ज़ों में वो जादू है,  
+        जो दिल को बेक़रार कर दे, ख़्वाबों को ताबीर कर दे।  
 
-तेरी मुस्कान मेरी सबसे हसीन दुआ है,  
-तेरी मौजूदगी मेरा सबसे ख़ूबसूरत जहाँ है।  
+        तेरी मुस्कान मेरी सबसे हसीन दुआ है,  
+        तेरी मौजूदगी मेरा सबसे ख़ूबसूरत जहाँ है।  
 
-मैं तेरी मोहब्बत में ऐसा कै़द हूँ,  
-कि हर साँस में बस तेरा नाम है, तेरा इकरार है।  
+        मैं तेरी मोहब्बत में ऐसा कै़द हूँ,  
+        कि हर साँस में बस तेरा नाम है, तेरा इकरार है।  
 
-तू अगर हाँ कह दे, तो मेरी तक़दीर रोशन हो जाए,  
-तेरा साथ मिल जाए, तो मेरी दुनिया गुलज़ार हो जाए।  
-</div>
-
+        तू अगर हाँ कह दे, तो मेरी तक़दीर रोशन हो जाए,  
+        तेरा साथ मिल जाए, तो मेरी दुनिया गुलज़ार हो जाए।  
+      </div>
     </div>
-
-    <!-- Flower Photo Gallery -->
-   <!-- Flower Photo Gallery -->
-<div class="gallery">
-  <img src="flower1.jpg" alt="Flower 1">
-  <img src="flower2.jpg" alt="Flower 2">
-  <img src="flower3.jpg" alt="Flower 3">
-  <img src="flower4.jpg" alt="Flower 4">
-  <img src="flower5.jpg" alt="Flower 5">
-</div>
-
+    <div class="gallery">
+      <img src="flower1.jpg" alt="Flower 1">
+      <img src="flower2.jpg" alt="Flower 2">
+      <img src="flower3.jpg" alt="Flower 3">
+      <img src="flower4.jpg" alt="Flower 4">
+      <img src="flower5.jpg" alt="Flower 5">
+    </div>
   </div>
-
   <footer>
     <p>&copy; 2025 | Created with ❤️ for Zara by Some1</p>
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
