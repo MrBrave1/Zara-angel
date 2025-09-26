@@ -4,7 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zara - A Beautiful and Amazing Soul</title>
+  <audio id="bgMusic">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
   <style>
+    .clickable-name {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #ff0055;
+  transition: color 0.3s;
+}
+
+.clickable-name:hover {
+  color: #ff3366;
+}
+
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -128,10 +143,17 @@
   white-space: pre-wrap; /* preserves spaces & line breaks */
     }
   </style>
+  <script>
+  function playMusic() {
+    const audio = document.getElementById("bgMusic");
+    audio.play();
+  }
+</script>
+
 </head>
 <body>
   <header>
-    <h1>Meet Zara</h1>
+    <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>
     <p>A Beautiful and Amazing Soul from India</p>
   </header>
 
@@ -196,6 +218,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
