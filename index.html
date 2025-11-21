@@ -7,7 +7,31 @@
   <audio id="bgMusic">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
+  
   <style>
+    /* Falling Flowers */
+.flower {
+  position: fixed;
+  top: -50px;
+  width: 30px;
+  height: 30px;
+  background-image: url('https://png.pngtree.com/png-clipart/20230128/original/pngtree-small-pink-flower-watercolor-clipart-png-image_8940833.png');
+  background-size: cover;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 1;
+  animation: fallDown linear infinite;
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
     :root {
       --golden-yellow: #ffe066;
       --golden-light: #fff9db;
@@ -219,5 +243,27 @@
   <footer>
     <p>&copy; 2025 | Created with ❤️ for Zara by Some1</p>
   </footer>
+  <script>
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+
+  // random left position
+  flower.style.left = Math.random() * 100 + "vw";
+
+  // random animation duration
+  flower.style.animationDuration = (4 + Math.random() * 6) + "s";
+
+  document.body.appendChild(flower);
+
+  // remove after falling
+  setTimeout(() => flower.remove(), 10000);
+}
+
+// create flowers every 300ms
+setInterval(createFlower, 300);
+</script>
+
 </body>
 </html>
+
