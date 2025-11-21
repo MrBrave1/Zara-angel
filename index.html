@@ -1,277 +1,624 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zara – A Beautiful Soul</title>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Zara - A Beautiful and Amazing Soul</title>  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">  
+  
+  <style>  
+    * {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
+    }  
 
-  <audio id="bgMusic">
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+    :root {  
+      --primary-color: #ff6b9d;  
+      --secondary-color: #ffa502;  
+      --accent-color: #6c63ff;  
+      --dark-color: #1a1a2e;  
+      --light-color: #f5f7fa;  
+      --gold-color: #ffd700;  
+      --white: #ffffff;  
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);  
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);  
+    }  
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    html {  
+      scroll-behavior: smooth;  
+    }  
 
-  <style>
+    body {  
+      font-family: 'Poppins', sans-serif;  
+      background: linear-gradient(135deg, #fff5f8 0%, #f0e6ff 100%);  
+      color: var(--dark-color);  
+      line-height: 1.6;  
+      overflow-x: hidden;  
+      min-height: 100vh;  
+    }  
 
-    /* -------------------- Global Styling -------------------- */
+    /* Floating Flowers Animation */  
+    .flower-bg {  
+      position: fixed;  
+      top: -50px;  
+      width: 40px;  
+      height: 40px;  
+      pointer-events: none;  
+      opacity: 0.15;  
+      z-index: 1;  
+      animation: float-down linear infinite;  
+    }  
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    @keyframes float-down {  
+      0% {  
+        transform: translateY(0) rotate(0deg);  
+        opacity: 0.15;  
+      }  
+      50% {  
+        opacity: 0.25;  
+      }  
+      100% {  
+        transform: translateY(110vh) rotate(360deg);  
+        opacity: 0;  
+      }  
+    }  
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #ffd3e0, #ffe7f2);
-      overflow-x: hidden;
-      padding-bottom: 70px;
-    }
+    /* Header */  
+    header {  
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 4rem 1rem;  
+      position: relative;  
+      overflow: hidden;  
+    }  
 
-    h1, h2 {
-      font-family: "Playfair Display", serif;
-    }
+    header::before {  
+      content: "";  
+      position: absolute;  
+      top: -50%;  
+      right: -10%;  
+      width: 500px;  
+      height: 500px;  
+      background: rgba(255, 255, 255, 0.1);  
+      border-radius: 50%;  
+      pointer-events: none;  
+    }  
 
-    /* -------------------- Falling Flowers -------------------- */
+    header::after {  
+      content: "";  
+      position: absolute;  
+      bottom: -30%;  
+      left: -5%;  
+      width: 300px;  
+      height: 300px;  
+      background: rgba(255, 255, 255, 0.05);  
+      border-radius: 50%;  
+      pointer-events: none;  
+    }  
 
-    .flower {
-      position: fixed;
-      top: -50px;
-      width: 34px;
-      height: 34px;
-      background-image: url('https://png.pngtree.com/png-clipart/20230128/original/pngtree-small-pink-flower-watercolor-clipart-png-image_8940833.png');
-      background-size: cover;
-      pointer-events: none;
-      opacity: 0.85;
-      z-index: 1;
-      animation: fallDown linear infinite;
-    }
+    header h1 {  
+      font-family: 'Playfair Display', serif;  
+      font-size: 3.5rem;  
+      font-weight: 900;  
+      margin-bottom: 0.5rem;  
+      position: relative;  
+      z-index: 2;  
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
+    }  
 
-    @keyframes fallDown {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(110vh) rotate(360deg); }
-    }
+    header p {  
+      font-size: 1.3rem;  
+      font-weight: 300;  
+      letter-spacing: 1px;  
+      position: relative;  
+      z-index: 2;  
+    }  
 
-    /* -------------------- Header -------------------- */
+    .clickable-name {  
+      cursor: pointer;  
+      text-decoration: none;  
+      color: var(--gold-color);  
+      font-weight: 700;  
+      transition: all 0.3s ease;  
+      position: relative;  
+    }  
 
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: linear-gradient(to right, #ffe17a, #fff6d6);
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
+    .clickable-name::after {  
+      content: "";  
+      position: absolute;  
+      bottom: -2px;  
+      left: 0;  
+      width: 0;  
+      height: 2px;  
+      background: var(--gold-color);  
+      transition: width 0.3s ease;  
+    }  
 
-    header h1 {
-      font-size: 2.7rem;
-      color: #444;
-    }
+    .clickable-name:hover {  
+      transform: scale(1.05);  
+    }  
 
-    .clickable-name {
-      color: #ff0059;
-      cursor: pointer;
-      text-decoration: underline;
-      transition: 0.3s ease;
-    }
-    .clickable-name:hover {
-      color: #ff3380;
-    }
+    .clickable-name:hover::after {  
+      width: 100%;  
+    }  
 
-    /* -------------------- Container -------------------- */
+    /* Navigation */  
+    nav {  
+      background: var(--white);  
+      padding: 1rem 0;  
+      box-shadow: var(--shadow);  
+      position: sticky;  
+      top: 0;  
+      z-index: 100;  
+    }  
 
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+    nav ul {  
+      list-style: none;  
+      display: flex;  
+      justify-content: center;  
+      gap: 2rem;  
+      flex-wrap: wrap;  
+      max-width: 1200px;  
+      margin: 0 auto;  
+      padding: 0 1rem;  
+    }  
 
-    /* -------------------- About Section -------------------- */
+    nav a {  
+      text-decoration: none;  
+      color: var(--dark-color);  
+      font-weight: 600;  
+      font-size: 0.95rem;  
+      transition: color 0.3s ease;  
+      position: relative;  
+    }  
 
-    .about-box {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    }
+    nav a::before {  
+      content: "";  
+      position: absolute;  
+      bottom: -3px;  
+      left: 0;  
+      width: 0;  
+      height: 2px;  
+      background: var(--primary-color);  
+      transition: width 0.3s ease;  
+    }  
 
-    .about-box h2 {
-      text-align: center;
-      color: #ff4d79;
-      margin-bottom: 1rem;
-      font-size: 2rem;
-    }
+    nav a:hover {  
+      color: var(--primary-color);  
+    }  
 
-    .about-box p {
-      font-size: 1.08rem;
-      color: #444;
-      margin-bottom: 1rem;
-      text-align: justify;
-    }
+    nav a:hover::before {  
+      width: 100%;  
+    }  
 
-    /* -------------------- Poem Box -------------------- */
+    /* Main Container */  
+    .container {  
+      max-width: 1200px;  
+      margin: 0 auto;  
+      padding: 0 1rem;  
+    }  
 
-    .poem {
-      background: #fff0f7;
-      border-left: 5px solid #ff4d79;
-      padding: 1.5rem;
-      margin: 1.8rem 0;
-      border-radius: 10px;
-      font-family: "Playfair Display", serif;
-      font-size: 1.15rem;
-      line-height: 1.8;
-      white-space: pre-wrap;
-    }
+    /* Hero Section */  
+    .hero {  
+      text-align: center;  
+      padding: 3rem 0;  
+    }  
 
-    /* -------------------- Gallery -------------------- */
+    .hero-image {  
+      width: 200px;  
+      height: 200px;  
+      margin: 0 auto 2rem;  
+      border-radius: 50%;  
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      box-shadow: var(--shadow-lg);  
+      font-size: 5rem;  
+      animation: pulse-glow 3s ease-in-out infinite;  
+    }  
 
-    .gallery {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      scroll-snap-type: x mandatory;
-    }
+    @keyframes pulse-glow {  
+      0%, 100% {  
+        box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);  
+        transform: scale(1);  
+      }  
+      50% {  
+        box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5);  
+        transform: scale(1.02);  
+      }  
+    }  
 
-    .gallery img {
-      flex: 0 0 auto;
-      width: 220px;
-      height: 240px;
-      border-radius: 14px;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-      transition: transform 0.3s;
-      scroll-snap-align: center;
-    }
+    /* Description Sections */  
+    .about-section {  
+      background: var(--white);  
+      padding: 3rem 2rem;  
+      border-radius: 15px;  
+      box-shadow: var(--shadow);  
+      margin: 2rem 0;  
+      transition: transform 0.3s ease, box-shadow 0.3s ease;  
+    }  
 
-    .gallery img:hover {
-      transform: scale(1.06);
-    }
+    .about-section:hover {  
+      transform: translateY(-5px);  
+      box-shadow: var(--shadow-lg);  
+    }  
 
-    /* -------------------- Footer -------------------- */
+    .about-section h2 {  
+      font-family: 'Playfair Display', serif;  
+      font-size: 2.5rem;  
+      color: var(--primary-color);  
+      margin-bottom: 1.5rem;  
+      position: relative;  
+      padding-bottom: 1rem;  
+    }  
 
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 0.8rem 0;
-      font-size: 0.95rem;
-      z-index: 10;
-    }
+    .about-section h2::after {  
+      content: "";  
+      position: absolute;  
+      bottom: 0;  
+      left: 0;  
+      width: 60px;  
+      height: 4px;  
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));  
+      border-radius: 2px;  
+    }  
 
-    /* -------------------- Responsive -------------------- */
+    .about-section p {  
+      font-size: 1.05rem;  
+      line-height: 1.8;  
+      margin-bottom: 1.5rem;  
+      color: #555;  
+    }  
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+    .about-section p:last-child {  
+      margin-bottom: 0;  
+    }  
 
-      .gallery img {
-        width: 150px;
-        height: 165px;
-      }
+    /* Poems Section */  
+    .poems-container {  
+      display: grid;  
+      grid-template-columns: 1fr 1fr;  
+      gap: 2rem;  
+      margin: 3rem 0;  
+    }  
 
-      .about-box p,
-      .poem {
-        font-size: 1rem;
-      }
-    }
+    .poem {  
+      background: linear-gradient(135deg, #fff5f8 0%, #f0e6ff 100%);  
+      padding: 2rem;  
+      border-radius: 15px;  
+      border-left: 5px solid var(--primary-color);  
+      box-shadow: var(--shadow);  
+      font-family: 'Cormorant Garamond', serif;  
+      font-size: 1.15rem;  
+      line-height: 1.9;  
+      color: #333;  
+      transition: transform 0.3s ease;  
+    }  
 
-  </style>
+    .poem:hover {  
+      transform: translateX(5px);  
+    }  
 
-  <script>
-    // Music Play
-    function playMusic() {
-      document.getElementById("bgMusic").play();
-    }
+    /* Gallery Section */  
+    .gallery-section h2 {  
+      font-family: 'Playfair Display', serif;  
+      font-size: 2.5rem;  
+      color: var(--primary-color);  
+      text-align: center;  
+      margin: 3rem 0 2rem;  
+      position: relative;  
+      padding-bottom: 1rem;  
+    }  
 
-    // Falling Flowers Function
-    function createFlower() {
-      const flower = document.createElement("div");
-      flower.classList.add("flower");
-      flower.style.left = Math.random() * 100 + "vw";
-      flower.style.animationDuration = (4 + Math.random() * 6) + "s";
-      document.body.appendChild(flower);
-      setTimeout(() => flower.remove(), 10000);
-    }
+    .gallery-section h2::after {  
+      content: "";  
+      position: absolute;  
+      bottom: 0;  
+      left: 50%;  
+      transform: translateX(-50%);  
+      width: 60px;  
+      height: 4px;  
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));  
+      border-radius: 2px;  
+    }  
 
-    setInterval(createFlower, 300);
-  </script>
+    .gallery {  
+      display: grid;  
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  
+      gap: 2rem;  
+      margin: 2rem 0;  
+      padding: 2rem;  
+      background: var(--white);  
+      border-radius: 15px;  
+      box-shadow: var(--shadow);  
+    }  
 
-</head>
+    .gallery-item {  
+      position: relative;  
+      overflow: hidden;  
+      border-radius: 12px;  
+      aspect-ratio: 1;  
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));  
+      box-shadow: var(--shadow);  
+    }  
 
-<body>
+    .gallery-item img {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover;  
+      transition: transform 0.4s ease, filter 0.4s ease;  
+      filter: brightness(0.9);  
+    }  
 
-  <header>
-    <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>
-    <p>A Beautiful and Amazing Soul from India</p>
-  </header>
+    .gallery-item:hover img {  
+      transform: scale(1.1);  
+      filter: brightness(1);  
+    }  
 
-  <div class="container">
+    .gallery-item-overlay {  
+      position: absolute;  
+      top: 0;  
+      left: 0;  
+      right: 0;  
+      bottom: 0;  
+      background: rgba(255, 107, 157, 0.3);  
+      display: flex;  
+      align-items: center;  
+      justify-content: center;  
+      color: var(--white);  
+      font-weight: 700;  
+      opacity: 0;  
+      transition: opacity 0.3s ease;  
+    }  
 
-    <div class="about-box">
-      <h2>About Zara</h2>
+    .gallery-item:hover .gallery-item-overlay {  
+      opacity: 1;  
+    }  
 
-      <p>Zara is a 19-year-old vibrant and inspiring young woman from Jaipur, currently pursuing her BBA in Finance. Her grace, charm, and radiant smile make her truly unforgettable.</p>
+    /* Stats Section */  
+    .stats {  
+      display: grid;  
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  
+      gap: 2rem;  
+      margin: 3rem 0;  
+      padding: 2rem;  
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);  
+      border-radius: 15px;  
+      color: var(--white);  
+      text-align: center;  
+    }  
 
-      <p>She carries a brilliant mind, a warm heart, and an artistic soul. Her positivity lights up every space she enters, and her ambition sets her apart as someone destined for great things.</p>
+    .stat-item h3 {  
+      font-size: 2.5rem;  
+      font-weight: 900;  
+      margin-bottom: 0.5rem;  
+    }  
 
-      <p>With beauty, intelligence, and kindness in perfect harmony, Zara is a gem whom life itself admires.</p>
+    .stat-item p {  
+      font-size: 1.1rem;  
+      opacity: 0.9;  
+    }  
 
-      <div class="poem">
-        Teri nigaahon mein woh noor hai,  
-        jisse meri rooh bhi sarshaar hai.
+    /* Footer */  
+    footer {  
+      background: var(--dark-color);  
+      color: var(--white);  
+      text-align: center;  
+      padding: 3rem 1rem;  
+      margin-top: 4rem;  
+      position: relative;  
+    }  
 
-        Tere lafzon mein woh jaadu hai,  
-        jo dil ko beqaraar kar de,  
-        khwabon ko taabeer kar de.
+    footer p {  
+      margin: 0.5rem 0;  
+      font-size: 0.95rem;  
+    }  
 
-        Teri muskaan meri sabse haseen dua hai,  
-        teri maujoodgi mera sabse khoobsurat jahaan hai.
+    .footer-heart {  
+      color: var(--primary-color);  
+      animation: heartbeat 1.5s ease-in-out infinite;  
+    }  
 
-        Main teri mohabbat mein aisa qaid hoon  
-        ke har saans mein bas tera naam hai.
+    @keyframes heartbeat {  
+      0%, 100% { transform: scale(1); }  
+      50% { transform: scale(1.2); }  
+    }  
 
-        Tu agar haan keh de  
-        to meri taqdeer roshan ho jaaye.
-      </div>
+    /* Audio Player Styling */  
+    audio {  
+      display: none;  
+    }  
 
-      <div class="poem">
-        तेरी निगाहों में वो नूर है,  
-        जिससे मेरी रूह भी सरशार है।  
+    /* Responsive Design */  
+    @media (max-width: 768px) {  
+      header h1 {  
+        font-size: 2.5rem;  
+      }  
 
-        तेरे लफ्ज़ों में वो जादू है,  
-        जो दिल को बेकरार कर दे।  
+      header p {  
+        font-size: 1.1rem;  
+      }  
 
-        तेरी मुस्कान मेरी सबसे हसीन दुआ है,  
-        तेरी मौजूदगी मेरा सबसे खूबसूरत जहाँ है।  
+      nav ul {  
+        gap: 1rem;  
+      }  
 
-        मैं तेरी मोहब्बत में ऐसा क़ैद हूँ,  
-        कि हर साँस में बस तेरा नाम है।  
+      nav a {  
+        font-size: 0.85rem;  
+      }  
 
-        तू अगर हाँ कह दे,  
-        तो मेरी तक़दीर रोशन हो जाए।
-      </div>
-    </div>
+      .about-section h2,  
+      .gallery-section h2 {  
+        font-size: 2rem;  
+      }  
 
-    <div class="gallery">
-      <img src="flower1.jpg" alt="">
-      <img src="flower2.jpg" alt="">
-      <img src="flower3.jpg" alt="">
-      <img src="flower4.jpg" alt="">
-      <img src="flower5.jpg" alt="">
-    </div>
+      .about-section {  
+        padding: 2rem 1.5rem;  
+      }  
 
-  </div>
+      .poems-container {  
+        grid-template-columns: 1fr;  
+      }  
 
-  <footer>
-    © 2025 | Made with ❤️ for Zara
-  </footer>
+      .poem {  
+        font-size: 1rem;  
+        padding: 1.5rem;  
+      }  
 
-</body>
-</html>
+      .gallery {  
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  
+        gap: 1.5rem;  
+        padding: 1.5rem;  
+      }  
+
+      .hero-image {  
+        width: 150px;  
+        height: 150px;  
+        font-size: 4rem;  
+      }  
+
+      .stats {  
+        grid-template-columns: 1fr;  
+        gap: 1.5rem;  
+      }  
+
+      .stat-item h3 {  
+        font-size: 2rem;  
+      }  
+    }  
+
+    @media (max-width: 480px) {  
+      header {  
+        padding: 2.5rem 1rem;  
+      }  
+
+      header h1 {  
+        font-size: 2rem;  
+      }  
+
+      header p {  
+        font-size: 1rem;  
+      }  
+
+      nav ul {  
+        flex-direction: column;  
+        gap: 0.5rem;  
+      }  
+
+      .about-section h2,  
+      .gallery-section h2 {  
+        font-size: 1.8rem;  
+      }  
+
+      .about-section {  
+        padding: 1.5rem 1rem;  
+        margin: 1.5rem 0;  
+      }  
+
+      .about-section p {  
+        font-size: 1rem;  
+      }  
+
+      .poem {  
+        font-size: 0.95rem;  
+        padding: 1.2rem;  
+      }  
+
+      .gallery {  
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));  
+        gap: 1rem;  
+        padding: 1rem;  
+      }  
+
+      .hero-image {  
+        width: 120px;  
+        height: 120px;  
+        font-size: 3rem;  
+      }  
+
+      footer {  
+        padding: 2rem 1rem;  
+      }  
+    }  
+  </style>  
+</head>  
+<body>  
+  <audio id="bgMusic">  
+    <source src="music.mp3" type="audio/mpeg">  
+  </audio>  
+
+  <header>  
+    <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>  
+    <p>A Beautiful and Amazing Soul from India 🌸</p>  
+  </header>  
+
+  <nav>  
+    <ul>  
+      <li><a href="#about">About</a></li>  
+      <li><a href="#poetry">Poetry</a></li>  
+      <li><a href="#gallery">Gallery</a></li>  
+      <li><a href="#contact">Contact</a></li>  
+    </ul>  
+  </nav>  
+
+  <div class="container">  
+    <!-- Hero Section -->  
+    <section class="hero">  
+      <div class="hero-image">✨</div>  
+    </section>  
+
+    <!-- About Section -->  
+    <section id="about" class="about-section">  
+      <h2>About Zara</h2>  
+      <p>  
+        Zara is a vibrant and inspiring 19-year-old young woman from the colorful city of Jaipur, India. With an unwavering passion for finance and business, she's currently pursuing her BBA in Finance, laying the foundation for a remarkable career in the corporate world.  
+      </p>  
+      <p>  
+        Known for her grace, charm, and radiant smile, Zara captivates everyone around her. Her warm personality and genuine kindness make her not just beautiful on the outside, but truly stunning from within. She brings positivity, creativity, and excellence to everything she undertakes.  
+      </p>  
+      <p>  
+        Whether she's engaged in stimulating conversations about economics, exploring Jaipur's architectural marvels, or simply making people smile, Zara embodies the perfect blend of intelligence, beauty, and compassion. She's a true gem who inspires everyone to dream bigger and live more passionately.  
+      </p>  
+    </section>  
+
+    <!-- Stats Section -->  
+    <section class="stats">  
+      <div class="stat-item">  
+        <h3>19</h3>  
+        <p>Years Young</p>  
+      </div>  
+      <div class="stat-item">  
+        <h3>BBA</h3>  
+        <p>Finance Student</p>  
+      </div>  
+      <div class="stat-item">  
+        <h3>∞</h3>  
+        <p>Reasons to Smile</p>  
+      </div>  
+    </section>  
+
+    <!-- Poetry Section -->  
+    <section id="poetry">  
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-color); text-align: center; margin: 3rem 0 2rem;">Poetry & Verses</h2>  
+      <div class="poems-container">  
+        <div class="poem">  
+          <p>  
+            Teri nigaahon mein wo noor hai,<br>  
+            jisse meri rooh bhi sarshaar hai.<br><br>  
+
+            Tere lafzon mein wo jaadu hai,<br>  
+            jo dil ko beqaraar kar de, khwabon ko taabeer kar de.<br><br>  
+
+            Teri muskaan meri sabse haseen dua hai,<br>  
+            teri maujoodgi mera sabse khoobsurat jahaan hai.<br><br>  
+
+            Main teri mohabbat mein aisa qaid hoon,<br>  
+            ke har saans mein bas tera naam hai, tera iqraar hai.<br><br>  
+
+            Tu agar haan keh de, to meri taqdeer roshan ho ja
