@@ -9,319 +9,150 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------- Base ---------- */
+    /* ---------- Reset & Base ---------- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html,body { height: 100%; }
+    html, body { height: 100%; }
     body {
       font-family: "Poppins", sans-serif;
       color: #333;
+      background: linear-gradient(135deg, #fff2fa 0%, #fff8ef 50%, #fffefb 100%);
       overflow-x: hidden;
       min-height: 100vh;
-      padding-bottom: 80px; /* room for footer */
-      background: linear-gradient(120deg, #fff1f6 0%, #fff6e6 50%, #fffaf2 100%);
-      position: relative;
+      padding-bottom: 80px; /* for footer */
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
+    h1,h2 { font-family: "Playfair Display", serif; }
 
-    /* ---------- Animated moving gradient background ---------- */
+    /* ---------- Moving background gradient ---------- */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       z-index: 0;
-      background: radial-gradient(circle at 10% 20%, rgba(255,192,203,0.15), transparent 10%),
-                  radial-gradient(circle at 90% 80%, rgba(255,230,166,0.12), transparent 10%),
-                  linear-gradient(120deg,#ffd3e0 0%, #ffe7f2 50%, #fff9f0 100%);
-      filter: saturate(1.03);
-      animation: bgShift 18s linear infinite;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,192,203,0.14), transparent 10%),
+        radial-gradient(circle at 85% 80%, rgba(255,230,166,0.10), transparent 12%),
+        linear-gradient(120deg,#ffd9e6 0%, #fff6e6 50%, #fffef9 100%);
+      filter: saturate(1.02);
+      animation: bgFloat 18s linear infinite;
       pointer-events: none;
     }
-    @keyframes bgShift {
+    @keyframes bgFloat {
       0% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-3%) scale(1.02); }
+      50%{ transform: translateY(-3%) scale(1.02); }
       100% { transform: translateY(0) scale(1); }
     }
 
     /* ---------- Header ---------- */
     header {
       position: relative;
-      z-index: 5;
+      z-index: 6;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 18px;
-      padding: 22px 18px;
-      background: linear-gradient(90deg, rgba(255,225,128,0.95), rgba(255,244,204,0.95));
-      border-bottom-left-radius: 18px;
-      border-bottom-right-radius: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      gap: 14px;
+      padding: 20px 14px;
+      background: linear-gradient(90deg, rgba(255,228,165,0.98), rgba(255,245,210,0.98));
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+      margin-bottom: 18px;
     }
-    header .logo {
-      width: 120px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-      flex-shrink: 0;
-    }
-    header .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-    header .title {
-      text-align: left;
-    }
-    header h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.8rem;
-      color: #3b3b3b;
-      line-height: 1;
-    }
-    header p {
-      font-size: 0.95rem;
-      color: #6b6b6b;
-      margin-top: 4px;
-    }
-    .clickable-name { color: #ff0a5a; cursor:pointer; text-decoration: underline; }
+    header .title { text-align: center; }
+    header h1 { font-size: 1.9rem; color: #3b3b3b; margin-bottom: 4px; }
+    header p { font-size: 0.95rem; color: #6b6b6b; }
 
-    /* ---------- Container ---------- */
-    .container {
-      max-width: 980px;
-      margin: 26px auto;
-      padding: 0 18px;
-      position: relative;
-      z-index: 5; /* above particles */
-    }
+    .clickable-name { color: #ff125b; cursor:pointer; text-decoration: underline; }
+
+    /* ---------- Container & Cards ---------- */
+    .container { max-width: 980px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 6; }
     .card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 14px;
-      padding: 22px;
-      box-shadow: 0 10px 30px rgba(20,20,20,0.06);
-      margin-bottom: 20px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
       opacity: 0;
       transform: translateY(10px);
-      animation: fadeInUp 0.7s ease forwards;
+      animation: fadeUp 0.7s ease forwards;
     }
-    .card.delay-1 { animation-delay: 0.18s; }
-    .card.delay-2 { animation-delay: 0.38s; }
-    .card.delay-3 { animation-delay: 0.58s; }
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .card.delay-1 { animation-delay: 0.12s; }
+    .card.delay-2 { animation-delay: 0.32s; }
+    .card.delay-3 { animation-delay: 0.52s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .about h2 {
-      font-family: "Playfair Display", serif;
-      color: #ff4d79;
-      margin-bottom: 10px;
-      font-size: 1.7rem;
-    }
-    .about p { color: #444; line-height: 1.65; margin-bottom: 10px; font-size: 1.03rem; text-align: justify; }
+    .about h2 { color: #ff4d79; font-size: 1.6rem; margin-bottom: 10px; }
+    .about p { color: #444; line-height: 1.6; margin-bottom: 10px; text-align: justify; font-size: 1.02rem; }
 
-    .poem {
-      background: linear-gradient(180deg,#fff6fb, #fff9f7);
-      border-left: 5px solid #ff4d79;
-      padding: 14px;
-      border-radius: 10px;
+    .poem { 
+      background: linear-gradient(180deg,#fff6fb,#fff9f7);
+      border-left: 4px solid #ff4d79;
+      padding: 12px;
+      border-radius: 9px;
       font-family: "Playfair Display", serif;
-      font-size: 1.06rem;
+      font-size: 1.05rem;
       line-height: 1.7;
       color: #402b34;
       white-space: pre-wrap;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     /* ---------- Gallery ---------- */
-    .gallery {
-      display: flex;
-      gap: 14px;
-      overflow-x: auto;
-      padding: 14px 6px;
-      scroll-snap-type: x mandatory;
-    }
+    .gallery { display:flex; gap:12px; overflow-x:auto; padding:10px 6px; scroll-snap-type: x mandatory; }
     .gallery img {
-      width: 220px;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      width: 220px; height: 240px; object-fit: cover; border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08); flex: 0 0 auto; scroll-snap-align: center;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
     .gallery img:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
 
-    /* ---------- Floating particles (flowers & hearts) ---------- */
-    .particle {
-      position: fixed;
-      top: -60px;
-      width: 36px;
-      height: 36px;
+    /* ---------- Falling items ---------- */
+    .falling-container { pointer-events: none; position: fixed; inset: 0; z-index: 2; overflow: hidden; }
+    .fall-item {
+      position: absolute;
+      top: -12vh;
       pointer-events: none;
-      z-index: 2; /* behind main content but above background */
       opacity: 0.95;
-      transform-origin: center;
       animation-timing-function: linear;
-      will-change: transform, opacity, left;
     }
 
-    /* flower image as background */
-    .particle.flower {
-      background-image: url('https://png.pngtree.com/png-clipart/20230128/original/pngtree-small-pink-flower-watercolor-clipart-png-image_8940833.png');
-      background-size: cover;
-      background-position: center;
-      border-radius: 6px;
-    }
-
-    /* heart drawn by CSS */
-    .particle.heart {
-      width: 34px;
-      height: 34px;
-      background: linear-gradient(135deg,#ff6f8b 0%, #ff3f6b 100%);
-      transform: rotate(45deg);
-      border-radius: 4px;
-      position: fixed;
-      top: -60px;
-      clip-path: path('M10 30 L34 30 L22 12 z'); /* fallback - modern browsers */
-    }
-    /* create heart look using pseudo elements inside heart container */
-    .heart-shape {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%) rotate(45deg);
-      width: 22px;
-      height: 22px;
-      background: linear-gradient(135deg,#ff7aa0,#ff3f6b);
-    }
-    .heart-shape::before, .heart-shape::after {
-      content: "";
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: inherit;
-    }
-    .heart-shape::before { left: -11px; top: 0; }
-    .heart-shape::after { left: 0; top: -11px; }
-
-    /* particle animation keyframes (fall + sway + rotate) */
-    @keyframes fall {
+    @keyframes fallOnly {
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-      70% { opacity: 0.95; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.95; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.9; }
     }
 
-    /* ---------- I Love You button ---------- */
-    .love-row {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-top: 12px;
-      justify-content: center;
-    }
+    /* ---------- Love Button ---------- */
+    .love-row { display:flex; justify-content:center; margin-top:12px; }
     .love-btn {
       background: linear-gradient(90deg,#ff0066,#ff66a3);
-      border: none;
-      color: #fff;
-      padding: 12px 18px;
-      font-weight: 600;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 8px 28px rgba(255,0,102,0.16);
-      transform: translateZ(0);
-      transition: transform .18s ease, box-shadow .18s ease;
-      font-size: 1rem;
+      border: none; color: #fff; padding: 12px 18px; font-weight:600; border-radius:999px;
+      cursor:pointer; box-shadow: 0 8px 28px rgba(255,0,102,0.12); transition: transform .18s ease, box-shadow .18s ease;
+      position: relative; z-index: 6; font-size: 1rem;
     }
-    .love-btn:active { transform: scale(.98); }
-    .love-btn:hover { box-shadow: 0 14px 40px rgba(255,0,102,0.2); }
+    .love-btn:hover { box-shadow: 0 14px 40px rgba(255,0,102,0.18); transform: translateY(-3px); }
 
-    /* little glow pulse */
-    .love-btn::after {
-      content: "";
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      transform: translateY(260px) translateX(-50%);
-      left: 50%;
-      top: 0;
-      filter: blur(26px);
-      opacity: 0.03;
-      pointer-events: none;
-    }
-
-    /* ---------- Modal (popup) ---------- */
+    /* ---------- Modal ---------- */
     .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(10,10,10,0.45);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 20;
-      padding: 18px;
+      position: fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background: rgba(10,10,10,0.45); z-index: 12; padding: 18px;
     }
     .modal {
-      width: 100%;
-      max-width: 520px;
-      background: linear-gradient(180deg,#fff,#fff6fb);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 12px 40px rgba(10,10,10,0.18);
-      text-align: center;
-      position: relative;
-      transform: scale(.9);
-      opacity: 0;
-      transition: transform .25s ease, opacity .25s ease;
+      width:100%; max-width:520px; background: linear-gradient(180deg,#fff,#fff6fb);
+      padding:18px; border-radius:12px; box-shadow: 0 12px 40px rgba(10,10,10,0.18);
+      text-align:center; transform:scale(.95); opacity:0; transition: transform .22s ease, opacity .22s ease;
     }
-    .modal.show { transform: scale(1); opacity: 1; }
-    .modal h3 { font-family: "Playfair Display", serif; color: #ff3b78; margin-bottom: 6px; }
-    .modal p { color: #4b4b4b; margin-bottom: 14px; line-height: 1.6; }
-    .modal .close-btn {
-      position: absolute; top: 10px; right: 10px;
-      background: transparent; border: none; font-size: 1.2rem; cursor: pointer;
-    }
+    .modal.show { transform: scale(1); opacity:1; }
 
-    /* ---------- Footer ---------- */
     footer {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 10;
-      background: rgba(30,30,30,0.95);
-      color: #fff;
-      text-align: center;
-      padding: 10px 14px;
-      font-size: 0.95rem;
-    }
-
-    /* ---------- Responsive tweaks ---------- */
-    @media (max-width:720px) {
-      header { gap: 12px; padding: 16px; }
-      header .logo { width: 92px; height: 54px; }
-      .gallery img { width: 150px; height: 160px; }
-      .card { padding: 16px; border-radius: 12px; }
-      .poem { font-size: 1rem; }
-      .love-btn { padding: 10px 14px; font-size: 0.95rem; }
+      position: fixed; left:0; right:0; bottom:0; z-index: 8;
+      background: rgba(25,25,25,0.94); color:#fff; text-align:center; padding:10px 14px; font-size:0.95rem;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Background music (play when name clicked) -->
-  <audio id="bgMusic" src="music.mp3" preload="auto"></audio>
-
-  <!-- Header with your uploaded logo image (local path) -->
   <header>
-    <div class="logo" aria-hidden="true">
-      <!-- Using the uploaded image path as requested -->
-      <img src="Ankit Sign.png" alt="Zara logo / Ankit sign">
-    </div>
     <div class="title">
       <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>
       <p>A beautiful and amazing soul from Jaipur, India</p>
@@ -330,29 +161,23 @@
 
   <main class="container">
 
-    <!-- About card -->
-    <section class="card about delay-1" aria-labelledby="aboutTitle">
-      <h2 id="aboutTitle">About Zara</h2>
-      <p>
-        Zara is a 19-year-old vibrant and inspiring young woman from Jaipur, currently pursuing her BBA in Finance.
-        Her warmth, intelligence, and creative spirit bring light to everyone she meets.
-      </p>
+    <!-- ABOUT + FIRST POEM -->
+    <section class="card about delay-1">
+      <h2>About Zara</h2>
+      <p>Zara is a 19-year-old vibrant and inspiring young woman from Jaipur, currently pursuing her BBA in Finance.</p>
+      <p>Her warmth, intelligence, and creative spirit bring light to everyone she meets.</p>
 
-      <p>
-        Driven, gentle, and full of curiosity — Zara's smile and presence make ordinary moments feel special.
-        She dreams big and moves gently toward her goals.
-      </p>
+      <div class="poem">
+तू ख़ामोश होती है,  
+तो मेरी धड़कन भी रुक-रुक कर चलती है।  
+जैसे दिल भी तेरे इशारों पर जीना सीख गया हो।
 
-      <div class="poem" aria-hidden="false">
-        Teri nigaahon mein woh noor hai,  
-        jisse meri rooh bhi sarshaar hai.
+तेरी बातों में एक नरमी है,  
+जो मुझे दिन भर थामे रखती है।  
 
-        Tere lafzon mein woh jaadu hai,  
-        jo dil ko beqaraar kar de,  
-        khwabon ko taabeer kar de.
-
-        Teri muskaan meri sabse haseen dua hai,  
-        teri maujoodgi mera sabse khoobsurat jahaan hai.
+ज़ारा,  
+तू मेरे लिए एक एहसास नहीं—  
+एक पूरी ज़िन्दगी है।
       </div>
 
       <div class="love-row">
@@ -360,170 +185,114 @@
       </div>
     </section>
 
-    <!-- Gallery -->
-    <section class="card delay-2" aria-labelledby="galleryTitle">
-      <h2 id="galleryTitle">Gallery</h2>
-      <div class="gallery" aria-hidden="false">
-        <img src="flower1.jpg" alt="Flower 1">
-        <img src="flower2.jpg" alt="Flower 2">
-        <img src="flower3.jpg" alt="Flower 3">
-        <img src="flower4.jpg" alt="Flower 4">
-        <img src="flower5.jpg" alt="Flower 5">
+    <!-- GALLERY -->
+    <section class="card delay-2">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <img src="flower1.jpg" alt="">
+        <img src="flower2.jpg" alt="">
+        <img src="flower3.jpg" alt="">
+        <img src="flower4.jpg" alt="">
+        <img src="flower5.jpg" alt="">
       </div>
     </section>
 
-    <!-- Additional card (poem in native script) -->
-    <section class="card delay-3" aria-labelledby="poemTitle">
-      <h2 id="poemTitle">A Poem for Zara</h2>
+    <!-- SECOND POEM -->
+    <section class="card delay-3">
+      <h2>Poem for Zara</h2>
       <div class="poem">
-        तेरी निगाहों में वो नूर है,  
-        जिससे मेरी रूह भी सरशार है।  
+रात भर करवटें लेता हूँ,  
+क्योंकि तेरी एक झलक मेरे ख़यालों में जगती रहती है।
 
-        तेरे लफ़्ज़ों में वो जादू है,  
-        जो दिल को बेकरार कर दे।  
+तेरे नाम की गर्माहट  
+मेरी साँसों में घुलती रहती है।
 
-        तू अगर हाँ कह दे,  
-        तो मेरी तक़दीर रोशन हो जाए।
+मैं दुआ करता हूँ—  
+हर सुबह तेरी मुस्कान से शुरू हो,  
+और हर रात तेरे नाम पर खत्म हो।
+
+तू दूर सही,  
+पर तेरी याद ने कभी दूरी बनने नहीं दी।
+      </div>
+    </section>
+
+    <!-- THIRD POEM -->
+    <section class="card delay-3">
+      <h2>Another Poem</h2>
+      <div class="poem">
+जब तू होती है—  
+तो गलियों में भी परियाँ उतर आती हैं।  
+
+तू चले तो लगता है  
+जैसे खुदा ने मेरे लिए रास्तों पर गुलाब बिछा दिए हों।  
+
+ज़ारा,  
+तेरे बिना एक पल भी पूरा नहीं,  
+और तेरे साथ एक पल—  
+पूरी उम्र बन जाता है।
       </div>
     </section>
 
   </main>
 
-  <!-- Modal / Popup -->
+  <!-- Modal -->
   <div class="modal-overlay" id="modal">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="close-btn" id="modalClose" aria-label="close">&times;</button>
-      <h3 id="modalTitle">For Zara, with all my heart</h3>
-      <p style="font-size:1.05rem; color:#444;">
-        Zara — every beat of my heart whispers your name. You make my world brighter.  
-        Will you be mine, forever and always?
-      </p>
-      <p style="margin-top:8px; font-weight:600; color:#ff3b78;">— From Someone who adores you</p>
+    <div class="modal">
+      <button class="close-btn" id="modalClose">&times;</button>
+      <h3>For Zara, with all my heart</h3>
+      <p>Zara — every beat of my heart whispers your name.</p>
     </div>
   </div>
 
-  <footer>
-    © 2025 | Made with ❤️ for Zara
-  </footer>
+  <!-- Falling hearts + flowers -->
+  <div class="falling-container" id="falling"></div>
 
-  <!-- ------------- Particle script: flowers + hearts ------------- -->
+  <footer>© 2025 | Made with ❤️ for Zara</footer>
+
   <script>
-    // play background music when name clicked
     function playMusic() {
       const audio = document.getElementById('bgMusic');
       if (!audio) return;
-      audio.volume = 0.45;
-      audio.play().catch(() => {/* autoplay blocked; user can click button */});
+      audio.volume = .45;
+      audio.play().catch(()=>{});
     }
 
-    // Create a particle (either flower or heart) at random intervals
-    const particleTypes = ['flower','heart'];
+    const symbols = ["💗", "🌸", "💖", "💞", "🌺", "💘"];
+    const container = document.getElementById("falling");
 
-    function createParticle() {
-      const type = particleTypes[Math.random() < 0.6 ? 0 : 1]; // more flowers than hearts
-      const el = document.createElement('div');
-      el.classList.add('particle', type);
-
-      // position horizontally somewhere across viewport
-      const left = Math.random() * 100; // vw
-      el.style.left = left + 'vw';
-
-      // random size slightly
-      const size = 22 + Math.random() * 28; // 22 - 50 px
-      el.style.width = size + 'px';
-      el.style.height = size + 'px';
-
-      // alternate animation duration (fall speed)
-      const duration = 4 + Math.random() * 6; // seconds
-      el.style.animation = `fall ${duration}s linear forwards`;
-
-      // subtle horizontal sway using CSS transform (random)
-      const sway = (Math.random() * 60) - 30; // -30 to 30 degrees random rotate
-      el.style.transform = `translateY(-10vh) rotate(${Math.random()*360}deg)`;
-
-      // z-index tiny variations so some appear over footer edges etc
-      el.style.zIndex = 2;
-
-      // If heart we create inner shape
-      if (type === 'heart') {
-        // use an inner element to craft heart with pseudo-circles
-        const shape = document.createElement('div');
-        shape.className = 'heart-shape';
-        shape.style.width = size * 0.65 + 'px';
-        shape.style.height = size * 0.65 + 'px';
-        el.appendChild(shape);
-      }
-
-      document.body.appendChild(el);
-
-      // remove after animation (duration + small buffer)
-      setTimeout(() => {
-        el.remove();
-      }, (duration + 0.6) * 1000);
+    function createFallItem() {
+      const el = document.createElement("div");
+      el.className = "fall-item";
+      el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      el.style.fontSize = (Math.random()*20+16)+"px";
+      el.style.left = Math.random()*100+"vw";
+      el.style.animation = `fallOnly ${Math.random()*5+5}s linear forwards`;
+      container.appendChild(el);
+      setTimeout(()=>el.remove(),12000);
     }
 
-    // create particles at random intervals
-    let particleTimer = setInterval(() => {
-      // create 1-2 particles sometimes
-      createParticle();
-      if (Math.random() > 0.8) createParticle();
-    }, 320);
+    setInterval(()=>{
+      createFallItem();
+      if(Math.random()>0.75) createFallItem();
+    },450);
 
-    // Pause particles on small devices if performance poor
-    if (window.innerWidth < 420) {
-      clearInterval(particleTimer);
-      // spawn fewer, less frequently
-      setInterval(createParticle, 700);
+    const modal = document.getElementById("modal");
+    const loveBtn = document.getElementById("loveBtn");
+    const modalClose = document.getElementById("modalClose");
+
+    loveBtn.onclick = ()=>{
+      modal.style.display="flex";
+      setTimeout(()=>modal.children[0].classList.add("show"),10);
+      for(let i=0;i<12;i++) setTimeout(createFallItem,i*35);
+    };
+    modalClose.onclick = ()=>closeModal();
+    modal.onclick = e=>{ if(e.target===modal) closeModal(); };
+
+    function closeModal(){
+      modal.children[0].classList.remove("show");
+      setTimeout(()=>modal.style.display="none",230);
     }
-
-    // ----------- Modal behavior -----------
-    const modal = document.getElementById('modal');
-    const loveBtn = document.getElementById('loveBtn');
-    const modalClose = document.getElementById('modalClose');
-
-    loveBtn.addEventListener('click', () => {
-      modal.style.display = 'flex';
-      // small delay for scale effect
-      setTimeout(() => {
-        modal.querySelector('.modal').classList.add('show');
-      }, 10);
-
-      // small confetti-like burst of particles
-      for (let i=0;i<18;i++) {
-        setTimeout(createParticle, i*40);
-      }
-    });
-
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    function closeModal() {
-      const inner = modal.querySelector('.modal');
-      inner.classList.remove('show');
-      setTimeout(() => modal.style.display = 'none', 250);
-    }
-
-    // Accessibility: close modal with ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
-    });
-
-    // Small improvement: lazy-play music on first user gesture (some browsers block autoplay)
-    function enableAudioOnFirstGesture() {
-      const audio = document.getElementById('bgMusic');
-      function handler() {
-        if (!audio) return;
-        audio.volume = 0.45;
-        audio.play().catch(()=>{});
-        window.removeEventListener('pointerdown', handler);
-      }
-      window.addEventListener('pointerdown', handler);
-    }
-    enableAudioOnFirstGesture();
-
   </script>
+
 </body>
 </html>
-
