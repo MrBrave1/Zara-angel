@@ -1,20 +1,22 @@
-.gallery .images {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.gallery img {
+/* Falling flowers background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 250px;   /* keeps images small on big screens */
-  height: auto;       /* keeps aspect ratio */
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    url('https://png.pngtree.com/png-clipart/20230128/original/pngtree-small-pink-flower-watercolor-clipart-png-image_8940833.png');
+  background-repeat: repeat;
+  background-size: 80px;
+  opacity: 0.3;
+  animation: fall 10s linear infinite;
+  z-index: -1;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
+@keyframes fall {
+  0% { background-position: 0 -100%; }
+  100% { background-position: 0 100%; }
 }
