@@ -1,624 +1,528 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Zara - A Beautiful and Amazing Soul</title>  
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">  
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">  
-  
-  <style>  
-    * {  
-      margin: 0;  
-      padding: 0;  
-      box-sizing: border-box;  
-    }  
-
-    :root {  
-      --primary-color: #ff6b9d;  
-      --secondary-color: #ffa502;  
-      --accent-color: #6c63ff;  
-      --dark-color: #1a1a2e;  
-      --light-color: #f5f7fa;  
-      --gold-color: #ffd700;  
-      --white: #ffffff;  
-      --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);  
-      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);  
-    }  
-
-    html {  
-      scroll-behavior: smooth;  
-    }  
-
-    body {  
-      font-family: 'Poppins', sans-serif;  
-      background: linear-gradient(135deg, #fff5f8 0%, #f0e6ff 100%);  
-      color: var(--dark-color);  
-      line-height: 1.6;  
-      overflow-x: hidden;  
-      min-height: 100vh;  
-    }  
-
-    /* Floating Flowers Animation */  
-    .flower-bg {  
-      position: fixed;  
-      top: -50px;  
-      width: 40px;  
-      height: 40px;  
-      pointer-events: none;  
-      opacity: 0.15;  
-      z-index: 1;  
-      animation: float-down linear infinite;  
-    }  
-
-    @keyframes float-down {  
-      0% {  
-        transform: translateY(0) rotate(0deg);  
-        opacity: 0.15;  
-      }  
-      50% {  
-        opacity: 0.25;  
-      }  
-      100% {  
-        transform: translateY(110vh) rotate(360deg);  
-        opacity: 0;  
-      }  
-    }  
-
-    /* Header */  
-    header {  
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);  
-      color: var(--white);  
-      text-align: center;  
-      padding: 4rem 1rem;  
-      position: relative;  
-      overflow: hidden;  
-    }  
-
-    header::before {  
-      content: "";  
-      position: absolute;  
-      top: -50%;  
-      right: -10%;  
-      width: 500px;  
-      height: 500px;  
-      background: rgba(255, 255, 255, 0.1);  
-      border-radius: 50%;  
-      pointer-events: none;  
-    }  
-
-    header::after {  
-      content: "";  
-      position: absolute;  
-      bottom: -30%;  
-      left: -5%;  
-      width: 300px;  
-      height: 300px;  
-      background: rgba(255, 255, 255, 0.05);  
-      border-radius: 50%;  
-      pointer-events: none;  
-    }  
-
-    header h1 {  
-      font-family: 'Playfair Display', serif;  
-      font-size: 3.5rem;  
-      font-weight: 900;  
-      margin-bottom: 0.5rem;  
-      position: relative;  
-      z-index: 2;  
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);  
-    }  
-
-    header p {  
-      font-size: 1.3rem;  
-      font-weight: 300;  
-      letter-spacing: 1px;  
-      position: relative;  
-      z-index: 2;  
-    }  
-
-    .clickable-name {  
-      cursor: pointer;  
-      text-decoration: none;  
-      color: var(--gold-color);  
-      font-weight: 700;  
-      transition: all 0.3s ease;  
-      position: relative;  
-    }  
-
-    .clickable-name::after {  
-      content: "";  
-      position: absolute;  
-      bottom: -2px;  
-      left: 0;  
-      width: 0;  
-      height: 2px;  
-      background: var(--gold-color);  
-      transition: width 0.3s ease;  
-    }  
-
-    .clickable-name:hover {  
-      transform: scale(1.05);  
-    }  
-
-    .clickable-name:hover::after {  
-      width: 100%;  
-    }  
-
-    /* Navigation */  
-    nav {  
-      background: var(--white);  
-      padding: 1rem 0;  
-      box-shadow: var(--shadow);  
-      position: sticky;  
-      top: 0;  
-      z-index: 100;  
-    }  
-
-    nav ul {  
-      list-style: none;  
-      display: flex;  
-      justify-content: center;  
-      gap: 2rem;  
-      flex-wrap: wrap;  
-      max-width: 1200px;  
-      margin: 0 auto;  
-      padding: 0 1rem;  
-    }  
-
-    nav a {  
-      text-decoration: none;  
-      color: var(--dark-color);  
-      font-weight: 600;  
-      font-size: 0.95rem;  
-      transition: color 0.3s ease;  
-      position: relative;  
-    }  
-
-    nav a::before {  
-      content: "";  
-      position: absolute;  
-      bottom: -3px;  
-      left: 0;  
-      width: 0;  
-      height: 2px;  
-      background: var(--primary-color);  
-      transition: width 0.3s ease;  
-    }  
-
-    nav a:hover {  
-      color: var(--primary-color);  
-    }  
-
-    nav a:hover::before {  
-      width: 100%;  
-    }  
-
-    /* Main Container */  
-    .container {  
-      max-width: 1200px;  
-      margin: 0 auto;  
-      padding: 0 1rem;  
-    }  
-
-    /* Hero Section */  
-    .hero {  
-      text-align: center;  
-      padding: 3rem 0;  
-    }  
-
-    .hero-image {  
-      width: 200px;  
-      height: 200px;  
-      margin: 0 auto 2rem;  
-      border-radius: 50%;  
-      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));  
-      display: flex;  
-      align-items: center;  
-      justify-content: center;  
-      box-shadow: var(--shadow-lg);  
-      font-size: 5rem;  
-      animation: pulse-glow 3s ease-in-out infinite;  
-    }  
-
-    @keyframes pulse-glow {  
-      0%, 100% {  
-        box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);  
-        transform: scale(1);  
-      }  
-      50% {  
-        box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5);  
-        transform: scale(1.02);  
-      }  
-    }  
-
-    /* Description Sections */  
-    .about-section {  
-      background: var(--white);  
-      padding: 3rem 2rem;  
-      border-radius: 15px;  
-      box-shadow: var(--shadow);  
-      margin: 2rem 0;  
-      transition: transform 0.3s ease, box-shadow 0.3s ease;  
-    }  
-
-    .about-section:hover {  
-      transform: translateY(-5px);  
-      box-shadow: var(--shadow-lg);  
-    }  
-
-    .about-section h2 {  
-      font-family: 'Playfair Display', serif;  
-      font-size: 2.5rem;  
-      color: var(--primary-color);  
-      margin-bottom: 1.5rem;  
-      position: relative;  
-      padding-bottom: 1rem;  
-    }  
-
-    .about-section h2::after {  
-      content: "";  
-      position: absolute;  
-      bottom: 0;  
-      left: 0;  
-      width: 60px;  
-      height: 4px;  
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));  
-      border-radius: 2px;  
-    }  
-
-    .about-section p {  
-      font-size: 1.05rem;  
-      line-height: 1.8;  
-      margin-bottom: 1.5rem;  
-      color: #555;  
-    }  
-
-    .about-section p:last-child {  
-      margin-bottom: 0;  
-    }  
-
-    /* Poems Section */  
-    .poems-container {  
-      display: grid;  
-      grid-template-columns: 1fr 1fr;  
-      gap: 2rem;  
-      margin: 3rem 0;  
-    }  
-
-    .poem {  
-      background: linear-gradient(135deg, #fff5f8 0%, #f0e6ff 100%);  
-      padding: 2rem;  
-      border-radius: 15px;  
-      border-left: 5px solid var(--primary-color);  
-      box-shadow: var(--shadow);  
-      font-family: 'Cormorant Garamond', serif;  
-      font-size: 1.15rem;  
-      line-height: 1.9;  
-      color: #333;  
-      transition: transform 0.3s ease;  
-    }  
-
-    .poem:hover {  
-      transform: translateX(5px);  
-    }  
-
-    /* Gallery Section */  
-    .gallery-section h2 {  
-      font-family: 'Playfair Display', serif;  
-      font-size: 2.5rem;  
-      color: var(--primary-color);  
-      text-align: center;  
-      margin: 3rem 0 2rem;  
-      position: relative;  
-      padding-bottom: 1rem;  
-    }  
-
-    .gallery-section h2::after {  
-      content: "";  
-      position: absolute;  
-      bottom: 0;  
-      left: 50%;  
-      transform: translateX(-50%);  
-      width: 60px;  
-      height: 4px;  
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));  
-      border-radius: 2px;  
-    }  
-
-    .gallery {  
-      display: grid;  
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  
-      gap: 2rem;  
-      margin: 2rem 0;  
-      padding: 2rem;  
-      background: var(--white);  
-      border-radius: 15px;  
-      box-shadow: var(--shadow);  
-    }  
-
-    .gallery-item {  
-      position: relative;  
-      overflow: hidden;  
-      border-radius: 12px;  
-      aspect-ratio: 1;  
-      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));  
-      box-shadow: var(--shadow);  
-    }  
-
-    .gallery-item img {  
-      width: 100%;  
-      height: 100%;  
-      object-fit: cover;  
-      transition: transform 0.4s ease, filter 0.4s ease;  
-      filter: brightness(0.9);  
-    }  
-
-    .gallery-item:hover img {  
-      transform: scale(1.1);  
-      filter: brightness(1);  
-    }  
-
-    .gallery-item-overlay {  
-      position: absolute;  
-      top: 0;  
-      left: 0;  
-      right: 0;  
-      bottom: 0;  
-      background: rgba(255, 107, 157, 0.3);  
-      display: flex;  
-      align-items: center;  
-      justify-content: center;  
-      color: var(--white);  
-      font-weight: 700;  
-      opacity: 0;  
-      transition: opacity 0.3s ease;  
-    }  
-
-    .gallery-item:hover .gallery-item-overlay {  
-      opacity: 1;  
-    }  
-
-    /* Stats Section */  
-    .stats {  
-      display: grid;  
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  
-      gap: 2rem;  
-      margin: 3rem 0;  
-      padding: 2rem;  
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);  
-      border-radius: 15px;  
-      color: var(--white);  
-      text-align: center;  
-    }  
-
-    .stat-item h3 {  
-      font-size: 2.5rem;  
-      font-weight: 900;  
-      margin-bottom: 0.5rem;  
-    }  
-
-    .stat-item p {  
-      font-size: 1.1rem;  
-      opacity: 0.9;  
-    }  
-
-    /* Footer */  
-    footer {  
-      background: var(--dark-color);  
-      color: var(--white);  
-      text-align: center;  
-      padding: 3rem 1rem;  
-      margin-top: 4rem;  
-      position: relative;  
-    }  
-
-    footer p {  
-      margin: 0.5rem 0;  
-      font-size: 0.95rem;  
-    }  
-
-    .footer-heart {  
-      color: var(--primary-color);  
-      animation: heartbeat 1.5s ease-in-out infinite;  
-    }  
-
-    @keyframes heartbeat {  
-      0%, 100% { transform: scale(1); }  
-      50% { transform: scale(1.2); }  
-    }  
-
-    /* Audio Player Styling */  
-    audio {  
-      display: none;  
-    }  
-
-    /* Responsive Design */  
-    @media (max-width: 768px) {  
-      header h1 {  
-        font-size: 2.5rem;  
-      }  
-
-      header p {  
-        font-size: 1.1rem;  
-      }  
-
-      nav ul {  
-        gap: 1rem;  
-      }  
-
-      nav a {  
-        font-size: 0.85rem;  
-      }  
-
-      .about-section h2,  
-      .gallery-section h2 {  
-        font-size: 2rem;  
-      }  
-
-      .about-section {  
-        padding: 2rem 1.5rem;  
-      }  
-
-      .poems-container {  
-        grid-template-columns: 1fr;  
-      }  
-
-      .poem {  
-        font-size: 1rem;  
-        padding: 1.5rem;  
-      }  
-
-      .gallery {  
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  
-        gap: 1.5rem;  
-        padding: 1.5rem;  
-      }  
-
-      .hero-image {  
-        width: 150px;  
-        height: 150px;  
-        font-size: 4rem;  
-      }  
-
-      .stats {  
-        grid-template-columns: 1fr;  
-        gap: 1.5rem;  
-      }  
-
-      .stat-item h3 {  
-        font-size: 2rem;  
-      }  
-    }  
-
-    @media (max-width: 480px) {  
-      header {  
-        padding: 2.5rem 1rem;  
-      }  
-
-      header h1 {  
-        font-size: 2rem;  
-      }  
-
-      header p {  
-        font-size: 1rem;  
-      }  
-
-      nav ul {  
-        flex-direction: column;  
-        gap: 0.5rem;  
-      }  
-
-      .about-section h2,  
-      .gallery-section h2 {  
-        font-size: 1.8rem;  
-      }  
-
-      .about-section {  
-        padding: 1.5rem 1rem;  
-        margin: 1.5rem 0;  
-      }  
-
-      .about-section p {  
-        font-size: 1rem;  
-      }  
-
-      .poem {  
-        font-size: 0.95rem;  
-        padding: 1.2rem;  
-      }  
-
-      .gallery {  
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));  
-        gap: 1rem;  
-        padding: 1rem;  
-      }  
-
-      .hero-image {  
-        width: 120px;  
-        height: 120px;  
-        font-size: 3rem;  
-      }  
-
-      footer {  
-        padding: 2rem 1rem;  
-      }  
-    }  
-  </style>  
-</head>  
-<body>  
-  <audio id="bgMusic">  
-    <source src="music.mp3" type="audio/mpeg">  
-  </audio>  
-
-  <header>  
-    <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>  
-    <p>A Beautiful and Amazing Soul from India 🌸</p>  
-  </header>  
-
-  <nav>  
-    <ul>  
-      <li><a href="#about">About</a></li>  
-      <li><a href="#poetry">Poetry</a></li>  
-      <li><a href="#gallery">Gallery</a></li>  
-      <li><a href="#contact">Contact</a></li>  
-    </ul>  
-  </nav>  
-
-  <div class="container">  
-    <!-- Hero Section -->  
-    <section class="hero">  
-      <div class="hero-image">✨</div>  
-    </section>  
-
-    <!-- About Section -->  
-    <section id="about" class="about-section">  
-      <h2>About Zara</h2>  
-      <p>  
-        Zara is a vibrant and inspiring 19-year-old young woman from the colorful city of Jaipur, India. With an unwavering passion for finance and business, she's currently pursuing her BBA in Finance, laying the foundation for a remarkable career in the corporate world.  
-      </p>  
-      <p>  
-        Known for her grace, charm, and radiant smile, Zara captivates everyone around her. Her warm personality and genuine kindness make her not just beautiful on the outside, but truly stunning from within. She brings positivity, creativity, and excellence to everything she undertakes.  
-      </p>  
-      <p>  
-        Whether she's engaged in stimulating conversations about economics, exploring Jaipur's architectural marvels, or simply making people smile, Zara embodies the perfect blend of intelligence, beauty, and compassion. She's a true gem who inspires everyone to dream bigger and live more passionately.  
-      </p>  
-    </section>  
-
-    <!-- Stats Section -->  
-    <section class="stats">  
-      <div class="stat-item">  
-        <h3>19</h3>  
-        <p>Years Young</p>  
-      </div>  
-      <div class="stat-item">  
-        <h3>BBA</h3>  
-        <p>Finance Student</p>  
-      </div>  
-      <div class="stat-item">  
-        <h3>∞</h3>  
-        <p>Reasons to Smile</p>  
-      </div>  
-    </section>  
-
-    <!-- Poetry Section -->  
-    <section id="poetry">  
-      <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-color); text-align: center; margin: 3rem 0 2rem;">Poetry & Verses</h2>  
-      <div class="poems-container">  
-        <div class="poem">  
-          <p>  
-            Teri nigaahon mein wo noor hai,<br>  
-            jisse meri rooh bhi sarshaar hai.<br><br>  
-
-            Tere lafzon mein wo jaadu hai,<br>  
-            jo dil ko beqaraar kar de, khwabon ko taabeer kar de.<br><br>  
-
-            Teri muskaan meri sabse haseen dua hai,<br>  
-            teri maujoodgi mera sabse khoobsurat jahaan hai.<br><br>  
-
-            Main teri mohabbat mein aisa qaid hoon,<br>  
-            ke har saans mein bas tera naam hai, tera iqraar hai.<br><br>  
-
-            Tu agar haan keh de, to meri taqdeer roshan ho ja
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zara — A Beautiful Soul</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Base ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body {
+      font-family: "Poppins", sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      min-height: 100vh;
+      padding-bottom: 80px; /* room for footer */
+      background: linear-gradient(120deg, #fff1f6 0%, #fff6e6 50%, #fffaf2 100%);
+      position: relative;
+    }
+
+    /* ---------- Animated moving gradient background ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(circle at 10% 20%, rgba(255,192,203,0.15), transparent 10%),
+                  radial-gradient(circle at 90% 80%, rgba(255,230,166,0.12), transparent 10%),
+                  linear-gradient(120deg,#ffd3e0 0%, #ffe7f2 50%, #fff9f0 100%);
+      filter: saturate(1.03);
+      animation: bgShift 18s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes bgShift {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-3%) scale(1.02); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 22px 18px;
+      background: linear-gradient(90deg, rgba(255,225,128,0.95), rgba(255,244,204,0.95));
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    header .logo {
+      width: 120px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      flex-shrink: 0;
+    }
+    header .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    header .title {
+      text-align: left;
+    }
+    header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      color: #3b3b3b;
+      line-height: 1;
+    }
+    header p {
+      font-size: 0.95rem;
+      color: #6b6b6b;
+      margin-top: 4px;
+    }
+    .clickable-name { color: #ff0a5a; cursor:pointer; text-decoration: underline; }
+
+    /* ---------- Container ---------- */
+    .container {
+      max-width: 980px;
+      margin: 26px auto;
+      padding: 0 18px;
+      position: relative;
+      z-index: 5; /* above particles */
+    }
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(20,20,20,0.06);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.7s ease forwards;
+    }
+    .card.delay-1 { animation-delay: 0.18s; }
+    .card.delay-2 { animation-delay: 0.38s; }
+    .card.delay-3 { animation-delay: 0.58s; }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .about h2 {
+      font-family: "Playfair Display", serif;
+      color: #ff4d79;
+      margin-bottom: 10px;
+      font-size: 1.7rem;
+    }
+    .about p { color: #444; line-height: 1.65; margin-bottom: 10px; font-size: 1.03rem; text-align: justify; }
+
+    .poem {
+      background: linear-gradient(180deg,#fff6fb, #fff9f7);
+      border-left: 5px solid #ff4d79;
+      padding: 14px;
+      border-radius: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: #402b34;
+      white-space: pre-wrap;
+      margin-top: 12px;
+    }
+
+    /* ---------- Gallery ---------- */
+    .gallery {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding: 14px 6px;
+      scroll-snap-type: x mandatory;
+    }
+    .gallery img {
+      width: 220px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gallery img:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+
+    /* ---------- Floating particles (flowers & hearts) ---------- */
+    .particle {
+      position: fixed;
+      top: -60px;
+      width: 36px;
+      height: 36px;
+      pointer-events: none;
+      z-index: 2; /* behind main content but above background */
+      opacity: 0.95;
+      transform-origin: center;
+      animation-timing-function: linear;
+      will-change: transform, opacity, left;
+    }
+
+    /* flower image as background */
+    .particle.flower {
+      background-image: url('https://png.pngtree.com/png-clipart/20230128/original/pngtree-small-pink-flower-watercolor-clipart-png-image_8940833.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: 6px;
+    }
+
+    /* heart drawn by CSS */
+    .particle.heart {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg,#ff6f8b 0%, #ff3f6b 100%);
+      transform: rotate(45deg);
+      border-radius: 4px;
+      position: fixed;
+      top: -60px;
+      clip-path: path('M10 30 L34 30 L22 12 z'); /* fallback - modern browsers */
+    }
+    /* create heart look using pseudo elements inside heart container */
+    .heart-shape {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%) rotate(45deg);
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg,#ff7aa0,#ff3f6b);
+    }
+    .heart-shape::before, .heart-shape::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: inherit;
+    }
+    .heart-shape::before { left: -11px; top: 0; }
+    .heart-shape::after { left: 0; top: -11px; }
+
+    /* particle animation keyframes (fall + sway + rotate) */
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      70% { opacity: 0.95; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.95; }
+    }
+
+    /* ---------- I Love You button ---------- */
+    .love-row {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-top: 12px;
+      justify-content: center;
+    }
+    .love-btn {
+      background: linear-gradient(90deg,#ff0066,#ff66a3);
+      border: none;
+      color: #fff;
+      padding: 12px 18px;
+      font-weight: 600;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(255,0,102,0.16);
+      transform: translateZ(0);
+      transition: transform .18s ease, box-shadow .18s ease;
+      font-size: 1rem;
+    }
+    .love-btn:active { transform: scale(.98); }
+    .love-btn:hover { box-shadow: 0 14px 40px rgba(255,0,102,0.2); }
+
+    /* little glow pulse */
+    .love-btn::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      transform: translateY(260px) translateX(-50%);
+      left: 50%;
+      top: 0;
+      filter: blur(26px);
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    /* ---------- Modal (popup) ---------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      padding: 18px;
+    }
+    .modal {
+      width: 100%;
+      max-width: 520px;
+      background: linear-gradient(180deg,#fff,#fff6fb);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(10,10,10,0.18);
+      text-align: center;
+      position: relative;
+      transform: scale(.9);
+      opacity: 0;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+    .modal.show { transform: scale(1); opacity: 1; }
+    .modal h3 { font-family: "Playfair Display", serif; color: #ff3b78; margin-bottom: 6px; }
+    .modal p { color: #4b4b4b; margin-bottom: 14px; line-height: 1.6; }
+    .modal .close-btn {
+      position: absolute; top: 10px; right: 10px;
+      background: transparent; border: none; font-size: 1.2rem; cursor: pointer;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 10;
+      background: rgba(30,30,30,0.95);
+      color: #fff;
+      text-align: center;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- Responsive tweaks ---------- */
+    @media (max-width:720px) {
+      header { gap: 12px; padding: 16px; }
+      header .logo { width: 92px; height: 54px; }
+      .gallery img { width: 150px; height: 160px; }
+      .card { padding: 16px; border-radius: 12px; }
+      .poem { font-size: 1rem; }
+      .love-btn { padding: 10px 14px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background music (play when name clicked) -->
+  <audio id="bgMusic" src="music.mp3" preload="auto"></audio>
+
+  <!-- Header with your uploaded logo image (local path) -->
+  <header>
+    <div class="logo" aria-hidden="true">
+      <!-- Using the uploaded image path as requested -->
+      <img src="/mnt/data/Ankit Sign.png" alt="Zara logo / Ankit sign">
+    </div>
+    <div class="title">
+      <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>
+      <p>A beautiful and amazing soul from Jaipur, India</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- About card -->
+    <section class="card about delay-1" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle">About Zara</h2>
+      <p>
+        Zara is a 19-year-old vibrant and inspiring young woman from Jaipur, currently pursuing her BBA in Finance.
+        Her warmth, intelligence, and creative spirit bring light to everyone she meets.
+      </p>
+
+      <p>
+        Driven, gentle, and full of curiosity — Zara's smile and presence make ordinary moments feel special.
+        She dreams big and moves gently toward her goals.
+      </p>
+
+      <div class="poem" aria-hidden="false">
+        Teri nigaahon mein woh noor hai,  
+        jisse meri rooh bhi sarshaar hai.
+
+        Tere lafzon mein woh jaadu hai,  
+        jo dil ko beqaraar kar de,  
+        khwabon ko taabeer kar de.
+
+        Teri muskaan meri sabse haseen dua hai,  
+        teri maujoodgi mera sabse khoobsurat jahaan hai.
+      </div>
+
+      <div class="love-row">
+        <button class="love-btn" id="loveBtn">💖 I Love You Zara</button>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="card delay-2" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle">Gallery</h2>
+      <div class="gallery" aria-hidden="false">
+        <img src="flower1.jpg" alt="Flower 1">
+        <img src="flower2.jpg" alt="Flower 2">
+        <img src="flower3.jpg" alt="Flower 3">
+        <img src="flower4.jpg" alt="Flower 4">
+        <img src="flower5.jpg" alt="Flower 5">
+      </div>
+    </section>
+
+    <!-- Additional card (poem in native script) -->
+    <section class="card delay-3" aria-labelledby="poemTitle">
+      <h2 id="poemTitle">A Poem for Zara</h2>
+      <div class="poem">
+        तेरी निगाहों में वो नूर है,  
+        जिससे मेरी रूह भी सरशार है।  
+
+        तेरे लफ़्ज़ों में वो जादू है,  
+        जो दिल को बेकरार कर दे।  
+
+        तू अगर हाँ कह दे,  
+        तो मेरी तक़दीर रोशन हो जाए।
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal / Popup -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-btn" id="modalClose" aria-label="close">&times;</button>
+      <h3 id="modalTitle">For Zara, with all my heart</h3>
+      <p style="font-size:1.05rem; color:#444;">
+        Zara — every beat of my heart whispers your name. You make my world brighter.  
+        Will you be mine, forever and always?
+      </p>
+      <p style="margin-top:8px; font-weight:600; color:#ff3b78;">— From Someone who adores you</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 | Made with ❤️ for Zara
+  </footer>
+
+  <!-- ------------- Particle script: flowers + hearts ------------- -->
+  <script>
+    // play background music when name clicked
+    function playMusic() {
+      const audio = document.getElementById('bgMusic');
+      if (!audio) return;
+      audio.volume = 0.45;
+      audio.play().catch(() => {/* autoplay blocked; user can click button */});
+    }
+
+    // Create a particle (either flower or heart) at random intervals
+    const particleTypes = ['flower','heart'];
+
+    function createParticle() {
+      const type = particleTypes[Math.random() < 0.6 ? 0 : 1]; // more flowers than hearts
+      const el = document.createElement('div');
+      el.classList.add('particle', type);
+
+      // position horizontally somewhere across viewport
+      const left = Math.random() * 100; // vw
+      el.style.left = left + 'vw';
+
+      // random size slightly
+      const size = 22 + Math.random() * 28; // 22 - 50 px
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+
+      // alternate animation duration (fall speed)
+      const duration = 4 + Math.random() * 6; // seconds
+      el.style.animation = `fall ${duration}s linear forwards`;
+
+      // subtle horizontal sway using CSS transform (random)
+      const sway = (Math.random() * 60) - 30; // -30 to 30 degrees random rotate
+      el.style.transform = `translateY(-10vh) rotate(${Math.random()*360}deg)`;
+
+      // z-index tiny variations so some appear over footer edges etc
+      el.style.zIndex = 2;
+
+      // If heart we create inner shape
+      if (type === 'heart') {
+        // use an inner element to craft heart with pseudo-circles
+        const shape = document.createElement('div');
+        shape.className = 'heart-shape';
+        shape.style.width = size * 0.65 + 'px';
+        shape.style.height = size * 0.65 + 'px';
+        el.appendChild(shape);
+      }
+
+      document.body.appendChild(el);
+
+      // remove after animation (duration + small buffer)
+      setTimeout(() => {
+        el.remove();
+      }, (duration + 0.6) * 1000);
+    }
+
+    // create particles at random intervals
+    let particleTimer = setInterval(() => {
+      // create 1-2 particles sometimes
+      createParticle();
+      if (Math.random() > 0.8) createParticle();
+    }, 320);
+
+    // Pause particles on small devices if performance poor
+    if (window.innerWidth < 420) {
+      clearInterval(particleTimer);
+      // spawn fewer, less frequently
+      setInterval(createParticle, 700);
+    }
+
+    // ----------- Modal behavior -----------
+    const modal = document.getElementById('modal');
+    const loveBtn = document.getElementById('loveBtn');
+    const modalClose = document.getElementById('modalClose');
+
+    loveBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      // small delay for scale effect
+      setTimeout(() => {
+        modal.querySelector('.modal').classList.add('show');
+      }, 10);
+
+      // small confetti-like burst of particles
+      for (let i=0;i<18;i++) {
+        setTimeout(createParticle, i*40);
+      }
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    function closeModal() {
+      const inner = modal.querySelector('.modal');
+      inner.classList.remove('show');
+      setTimeout(() => modal.style.display = 'none', 250);
+    }
+
+    // Accessibility: close modal with ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    });
+
+    // Small improvement: lazy-play music on first user gesture (some browsers block autoplay)
+    function enableAudioOnFirstGesture() {
+      const audio = document.getElementById('bgMusic');
+      function handler() {
+        if (!audio) return;
+        audio.volume = 0.45;
+        audio.play().catch(()=>{});
+        window.removeEventListener('pointerdown', handler);
+      }
+      window.addEventListener('pointerdown', handler);
+    }
+    enableAudioOnFirstGesture();
+
+  </script>
+</body>
+</html>
