@@ -3,267 +3,275 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zara - A Beautiful and Amazing Soul</title>
+  <title>Zara – A Beautiful Soul</title>
+
   <audio id="bgMusic">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
-  
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
   <style>
-    /* Falling Flowers */
-.flower {
-  position: fixed;
-  top: -50px;
-  width: 30px;
-  height: 30px;
-  background-image: url('https://png.pngtree.com/png-clipart/20230128/original/pngtree-small-pink-flower-watercolor-clipart-png-image_8940833.png');
-  background-size: cover;
-  pointer-events: none;
-  opacity: 0.9;
-  z-index: 1;
-  animation: fallDown linear infinite;
-}
 
-@keyframes fallDown {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-  }
-}
+    /* -------------------- Global Styling -------------------- */
 
-    :root {
-      --golden-yellow: #ffe066;
-      --golden-light: #fff9db;
-      --accent-pink: #ff6f61;
-      --deep-pink: #ff0055;
-      --lighter-pink: #ff3366;
-      --background-pink: #ffcce0;
-      --poem-bg: #fff0f5;
-      --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      --container-width: 900px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--background-pink);
-      color: #333;
-      line-height: 1.6;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffd3e0, #ffe7f2);
       overflow-x: hidden;
+      padding-bottom: 70px;
     }
 
+    h1, h2 {
+      font-family: "Playfair Display", serif;
+    }
+
+    /* -------------------- Falling Flowers -------------------- */
+
+    .flower {
+      position: fixed;
+      top: -50px;
+      width: 34px;
+      height: 34px;
+      background-image: url('https://png.pngtree.com/png-clipart/20230128/original/pngtree-small-pink-flower-watercolor-clipart-png-image_8940833.png');
+      background-size: cover;
+      pointer-events: none;
+      opacity: 0.85;
+      z-index: 1;
+      animation: fallDown linear infinite;
+    }
+
+    @keyframes fallDown {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* -------------------- Header -------------------- */
+
     header {
-      background: linear-gradient(to right, var(--golden-yellow), var(--golden-light));
-      color: #404040;
       text-align: center;
-      padding: 2rem 0;
+      padding: 2rem 1rem;
+      background: linear-gradient(to right, #ffe17a, #fff6d6);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
+      font-size: 2.7rem;
+      color: #444;
     }
 
     .clickable-name {
+      color: #ff0059;
       cursor: pointer;
       text-decoration: underline;
-      color: var(--deep-pink);
-      transition: color 0.3s;
+      transition: 0.3s ease;
     }
     .clickable-name:hover {
-      color: var(--lighter-pink);
+      color: #ff3380;
     }
 
+    /* -------------------- Container -------------------- */
+
     .container {
-      max-width: var(--container-width);
+      max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
 
-    .description {
+    /* -------------------- About Section -------------------- */
+
+    .about-box {
       background: #fff;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: var(--box-shadow);
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .about-box h2 {
       text-align: center;
-    }
-    .description h2 {
-      color: var(--accent-pink);
-      font-size: 1.8rem;
+      color: #ff4d79;
       margin-bottom: 1rem;
+      font-size: 2rem;
     }
-    .description p {
-      font-size: 1.1rem;
+
+    .about-box p {
+      font-size: 1.08rem;
+      color: #444;
       margin-bottom: 1rem;
+      text-align: justify;
     }
+
+    /* -------------------- Poem Box -------------------- */
 
     .poem {
-      background: var(--poem-bg);
-      border-left: 4px solid var(--accent-pink);
+      background: #fff0f7;
+      border-left: 5px solid #ff4d79;
       padding: 1.5rem;
-      margin: 2rem 0 0 0;
-      border-radius: 8px;
-      font-family: 'Georgia', serif;
-      font-size: 1.13rem;
+      margin: 1.8rem 0;
+      border-radius: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
       line-height: 1.8;
       white-space: pre-wrap;
-      text-align: left;
     }
 
+    /* -------------------- Gallery -------------------- */
+
     .gallery {
-      margin: 2rem auto 1rem auto;
-      padding: 1rem;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: var(--box-shadow);
+      margin-top: 2rem;
       display: flex;
       gap: 1rem;
       overflow-x: auto;
+      padding-bottom: 10px;
       scroll-snap-type: x mandatory;
     }
+
     .gallery img {
       flex: 0 0 auto;
       width: 220px;
-      height: 220px;
-      border-radius: 10px;
+      height: 240px;
+      border-radius: 14px;
       object-fit: cover;
-      scroll-snap-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
       transition: transform 0.3s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-      background: #f9f9f9;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
+      scroll-snap-align: center;
     }
 
+    .gallery img:hover {
+      transform: scale(1.06);
+    }
+
+    /* -------------------- Footer -------------------- */
+
     footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
       position: fixed;
       bottom: 0;
       width: 100%;
-      font-size: 0.9rem;
-      z-index: 999;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 0.8rem 0;
+      font-size: 0.95rem;
+      z-index: 10;
     }
+
+    /* -------------------- Responsive -------------------- */
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
-      header p {
-        font-size: 1rem;
-      }
-      .description h2 {
-        font-size: 1.5rem;
-      }
-      .description p, .poem {
-        font-size: 1rem;
-      }
+
       .gallery img {
-        width: 140px;
-        height: 140px;
+        width: 150px;
+        height: 165px;
       }
-      .container {
-        padding: 0 0.3rem;
+
+      .about-box p,
+      .poem {
+        font-size: 1rem;
       }
     }
+
   </style>
+
   <script>
+    // Music Play
     function playMusic() {
-      const audio = document.getElementById("bgMusic");
-      audio.play();
+      document.getElementById("bgMusic").play();
     }
+
+    // Falling Flowers Function
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = (4 + Math.random() * 6) + "s";
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 10000);
+    }
+
+    setInterval(createFlower, 300);
   </script>
+
 </head>
+
 <body>
+
   <header>
     <h1>Meet <span class="clickable-name" onclick="playMusic()">Zara</span></h1>
     <p>A Beautiful and Amazing Soul from India</p>
   </header>
+
   <div class="container">
-    <div class="description">
+
+    <div class="about-box">
       <h2>About Zara</h2>
-      <p>
-        Zara is a 19-year-old vibrant and inspiring young woman from India, currently pursuing her BBA in Finance in the beautiful city of Jaipur. Known for her grace and charm, Zara captivates everyone with her warm personality and radiant smile.
-      </p>
-      <p>
-        Her dedication to her studies in finance reflects her sharp intellect and ambition to make a mark in the world of business. Beyond academics, Zara is an amazing individual who brings positivity and creativity to everything she does, whether it's engaging in meaningful conversations or exploring the rich culture of Jaipur.
-      </p>
-      <p>
-        With her blend of beauty, intelligence, and kindness, Zara is truly a gem, inspiring those around her to dream big and live passionately.
-      </p>
+
+      <p>Zara is a 19-year-old vibrant and inspiring young woman from Jaipur, currently pursuing her BBA in Finance. Her grace, charm, and radiant smile make her truly unforgettable.</p>
+
+      <p>She carries a brilliant mind, a warm heart, and an artistic soul. Her positivity lights up every space she enters, and her ambition sets her apart as someone destined for great things.</p>
+
+      <p>With beauty, intelligence, and kindness in perfect harmony, Zara is a gem whom life itself admires.</p>
+
       <div class="poem">
-        Teri nigaahon mein wo noor hai,<br>
-        jisse meri rooh bhi sarshaar hai.<br><br>
+        Teri nigaahon mein woh noor hai,  
+        jisse meri rooh bhi sarshaar hai.
 
-        Tere lafzon mein wo jaadu hai,<br>
-        jo dil ko beqaraar kar de, khwabon ko taabeer kar de.<br><br>
+        Tere lafzon mein woh jaadu hai,  
+        jo dil ko beqaraar kar de,  
+        khwabon ko taabeer kar de.
 
-        Teri muskaan meri sabse haseen dua hai,<br>
-        teri maujoodgi mera sabse khoobsurat jahaan hai.<br><br>
+        Teri muskaan meri sabse haseen dua hai,  
+        teri maujoodgi mera sabse khoobsurat jahaan hai.
 
-        Main teri mohabbat mein aisa qaid hoon,<br>
-        ke har saans mein bas tera naam hai, tera iqraar hai.<br><br>
+        Main teri mohabbat mein aisa qaid hoon  
+        ke har saans mein bas tera naam hai.
 
-        Tu agar haan keh de, to meri taqdeer roshan ho jaaye,<br>
-        tera saath mil jaaye, to meri duniya gulzaar ho jaaye.
+        Tu agar haan keh de  
+        to meri taqdeer roshan ho jaaye.
       </div>
+
       <div class="poem">
         तेरी निगाहों में वो नूर है,  
         जिससे मेरी रूह भी सरशार है।  
 
-        तेरे लफ़्ज़ों में वो जादू है,  
-        जो दिल को बेक़रार कर दे, ख़्वाबों को ताबीर कर दे।  
+        तेरे लफ्ज़ों में वो जादू है,  
+        जो दिल को बेकरार कर दे।  
 
         तेरी मुस्कान मेरी सबसे हसीन दुआ है,  
-        तेरी मौजूदगी मेरा सबसे ख़ूबसूरत जहाँ है।  
+        तेरी मौजूदगी मेरा सबसे खूबसूरत जहाँ है।  
 
-        मैं तेरी मोहब्बत में ऐसा कै़द हूँ,  
-        कि हर साँस में बस तेरा नाम है, तेरा इकरार है।  
+        मैं तेरी मोहब्बत में ऐसा क़ैद हूँ,  
+        कि हर साँस में बस तेरा नाम है।  
 
-        तू अगर हाँ कह दे, तो मेरी तक़दीर रोशन हो जाए,  
-        तेरा साथ मिल जाए, तो मेरी दुनिया गुलज़ार हो जाए।  
+        तू अगर हाँ कह दे,  
+        तो मेरी तक़दीर रोशन हो जाए।
       </div>
     </div>
+
     <div class="gallery">
-      <img src="flower1.jpg" alt="Flower 1">
-      <img src="flower2.jpg" alt="Flower 2">
-      <img src="flower3.jpg" alt="Flower 3">
-      <img src="flower4.jpg" alt="Flower 4">
-      <img src="flower5.jpg" alt="Flower 5">
+      <img src="flower1.jpg" alt="">
+      <img src="flower2.jpg" alt="">
+      <img src="flower3.jpg" alt="">
+      <img src="flower4.jpg" alt="">
+      <img src="flower5.jpg" alt="">
     </div>
+
   </div>
+
   <footer>
-    <p>&copy; 2025 | Created with ❤️ for Zara by Some1</p>
+    © 2025 | Made with ❤️ for Zara
   </footer>
-  <script>
-function createFlower() {
-  const flower = document.createElement("div");
-  flower.classList.add("flower");
-
-  // random left position
-  flower.style.left = Math.random() * 100 + "vw";
-
-  // random animation duration
-  flower.style.animationDuration = (4 + Math.random() * 6) + "s";
-
-  document.body.appendChild(flower);
-
-  // remove after falling
-  setTimeout(() => flower.remove(), 10000);
-}
-
-// create flowers every 300ms
-setInterval(createFlower, 300);
-</script>
 
 </body>
 </html>
-
